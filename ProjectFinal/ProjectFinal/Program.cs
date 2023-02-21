@@ -1,13 +1,16 @@
 using AdminWebCore.Configurations.IdentityServer;
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using ProjectFinal.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
+builder.Services.AddSingleton<MWMSystemContext>();
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
+
 
 builder.Services.AddOpenApiDocument(config =>
 {
