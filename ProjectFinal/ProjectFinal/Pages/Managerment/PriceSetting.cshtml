@@ -1,0 +1,124 @@
+﻿@page
+@model ProjectFinal.Pages.Managerment.PriceSettingModel
+@{
+    var inforProduct = Model.inforProduct;
+    var listInforProducts = Model.dbContext.InformationProducts.ToList();
+    var listProducts = Model.dbContext.Products.ToList();
+    var listSuppliers = Model.dbContext.Suppliers.ToList();
+    var ProductsOfSettingPrices = Model.GetAllProductOfSettingPrice();
+}
+<script>
+       var addButton = document.getElementById("addNewButton");
+    var newItemForm = document.getElementById("newItemForm");
+
+    addButton.addEventListener("click", function() {
+        newItemForm.style.display = "block";
+    });
+</script>   
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Thiết Lập Giá
+                </div>
+                <div class="row">
+                    <div class="dropdown col-lg-3">
+                        <button class="btn btn-info dropdown-toggle" id="dropdownMenu2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Loại Sản Phẩm</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <button class="dropdown-item" type="button">Xi Măng</button>
+                            <button class="dropdown-item" type="button">Sắt Thép </button>
+                        </div>
+                    </div>
+                    <p class="col-lg-1"></p>
+                    <input style="width:200px" class="form-control col-lg-4" type="text" placeholder="Tìm Kiếm">
+                    <p class="col-lg-1"></p>
+                    @*<a style="width:100px" class="btn btn-block btn-primary col-lg-3" href="#">Thêm Mới</a>*@
+                    <button id="addNewButton">Thêm mới</button>
+
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Mã Sản Phẩm</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Giá Bán</th>
+                            <th>Đơn Vị</ th>
+                            <th>Trạng Thái</th>
+                            <th>Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ProductsOfSettingPrices != null)
+                        {
+                            @foreach (dynamic pst in ProductsOfSettingPrices)
+                            {
+                                @if (@pst.Status == true)
+                                {
+                                    <tr>
+                                        <td>@pst.Id</td>
+                                        <td>@pst.Name</td>
+                                        <td>
+                                            <input class="form-control" value="@pst.SalePrice" type="text">
+                                        </td>
+                                        <td>@pst.Unit</td>
+                                        <td>
+                                            <p>Đang Kinh Doanh</p>
+                                        </td>
+                                        <td style="width: 150px">
+                                            <div class="d-flex justify-content-around">
+                                                <a style="width:50px; height: 30px" class="btn btn-success" href="#">Xem</a>
+                                                <a style="width:50px; height: 30px" class="btn btn-warning" href="#">Sửa</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+                            }
+                        }
+                        else
+                        {
+
+                            <p>Không có sản phẩm nào được tìm thấy</p>
+                        }
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#">Prev</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>
+<!--New form-->
+<div id="newItemForm" style="display:none;">
+    <form>
+         <input style="width:200px" class="form-control col-lg-4" type="text" placeholder="Tìm Kiếm">
+          <input style="width:200px" class="form-control col-lg-4" type="text" placeholder="Tìm Kiếm">
+        <!-- Các trường nhập liệu của form -->
+    </form>
+</div>

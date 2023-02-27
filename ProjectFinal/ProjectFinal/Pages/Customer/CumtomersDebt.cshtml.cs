@@ -7,6 +7,7 @@ namespace ProjectFinal.Pages.Customer
     {
         public void OnGet()
         {
+
         }
     }
 }

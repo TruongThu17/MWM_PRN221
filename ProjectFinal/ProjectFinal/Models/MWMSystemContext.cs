@@ -28,11 +28,8 @@ namespace ProjectFinal.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var builder = new ConfigurationBuilder()
-                                 .SetBasePath(Directory.GetCurrentDirectory())
-                                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-                IConfigurationRoot configuration = builder.Build();
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("MWMSystem"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("server=DESKTOP-PVD65DI;database=MWMSystem;uid=sa;password=123456;Integrated Security=True;TrustServerCertificate=true");
             }
         }
 
@@ -96,6 +93,8 @@ namespace ProjectFinal.Models
                 entity.Property(e => e.Name).HasMaxLength(250);
 
                 entity.Property(e => e.Producer).HasMaxLength(250);
+
+                entity.Property(e => e.Unit).HasMaxLength(250);
 
                 entity.HasOne(d => d.ProductTypeNavigation)
                     .WithMany(p => p.Products)

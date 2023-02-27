@@ -18,6 +18,7 @@ namespace ProjectFinal.Models
         public string? Note { get; set; }
         public int? QuantityImport { get; set; }
         public string? Shelves { get; set; }
+        public double? Discount { get; set; }
 
         public virtual Product Product { get; set; } = null!;
         public virtual Supplier? Supplier { get; set; }

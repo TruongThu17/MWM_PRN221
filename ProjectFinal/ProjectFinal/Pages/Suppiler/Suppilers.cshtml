@@ -11,7 +11,12 @@
                 <div>
                     <i class="fa fa-align-justify"></i> Danh Sách Nhà Phân Phối
                 </div>
-                <a style="width:100px" class="btn btn-block btn-primary" href="#">Thêm Mới</a>
+                <div class="row">
+                    <input style="width:200px" class="form-control col-lg-5" type="text" placeholder="Tìm Kiếm">
+                    <p class="col-lg-1"></p>
+                    <button id="addNewButton">Thêm mới</button>
+                    @*<button style="width:100px" id="createSupplier" class="btn btn-block btn-primary col-lg-5">Thêm Mới</button>*@
+                </div>
             </div>
             <div class="card-body">
                 <table class="table table-responsive-sm table-bordered table-striped table-sm">
@@ -50,32 +55,48 @@
                             <p>Không có nhà phân phối nào được tìm thấy</p>
                         }
 
-            </tbody>
-            </table>
-            <nav>
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#">Prev</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#">Prev</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
+    <!-- /.col-->
 </div>
-<!-- /.col-->
-        </div>
+
+<!-- Add new supplier -->
+<div id="newItemForm" style="display:none;">
+   <form>
+      <!-- Các trường nhập liệu của form -->
+   </form>
+</div>
+
+<script>
+   var addButton = document.getElementById("addNewButton");
+   var newItemForm = document.getElementById("newItemForm");
+
+   addButton.addEventListener("click", function(){
+       newItemForm.style.display = "block";
+   });
+</script>

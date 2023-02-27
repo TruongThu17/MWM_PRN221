@@ -15,6 +15,7 @@ namespace ProjectFinal.Models
         public string? Producer { get; set; }
         public int ProductType { get; set; }
         public bool Status { get; set; }
+        public string? Unit { get; set; }
 
         public virtual ProductType ProductTypeNavigation { get; set; } = null!;
         public virtual ICollection<InformationProduct> InformationProducts { get; set; }
