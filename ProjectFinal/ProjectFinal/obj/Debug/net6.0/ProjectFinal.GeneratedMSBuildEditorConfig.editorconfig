@@ -43,10 +43,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5cbG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Login/register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5ccmVnaXN0ZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Managerment/InventoryControlProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcSW52ZW50b3J5Q29udHJvbFByb2R1Y3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -67,6 +63,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Bc2lkZU1lbnUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Shared/_LayoutFullScreen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRGdWxsU2NyZWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Shared/_NavBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9OYXZCYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -85,6 +85,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Suppiler/SupplierDebt.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGlsZXJcU3VwcGxpZXJEZWJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Transaction/Bills.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cQmlsbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Transaction/Imports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cSW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Transaction/Orders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Transaction/ReturnImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cUmV0dXJuSW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Transaction/ReturnProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cUmV0dXJuUHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/_ViewImports.cshtml]

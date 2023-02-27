@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
           "Microsoft.Extensions.Configuration.Json": "6.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.2",
+          "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.6",
           "NSwag.AspNetCore": "13.3.0"
         },
         "runtime": {
@@ -90,6 +91,7 @@
           }
         }
       },
+      "jQuery/1.8.0": {},
       "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.18": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.8.0"
@@ -869,6 +871,11 @@
             "assemblyVersion": "6.8.0.0",
             "fileVersion": "6.8.0.11012"
           }
+        }
+      },
+      "Microsoft.jQuery.Unobtrusive.Ajax/3.2.6": {
+        "dependencies": {
+          "jQuery": "1.8.0"
         }
       },
       "Microsoft.Net.Http.Headers/1.0.2": {
@@ -2196,6 +2203,13 @@
       "path": "identityserver4.storage/3.1.2",
       "hashPath": "identityserver4.storage.3.1.2.nupkg.sha512"
     },
+    "jQuery/1.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-laDFQRJrIRHT0Z0GVYklMt3bE0iu0MZFJwHwg21kt3SHb7Bj8TdNiM3K+ZdK1DzB8ZxKy8z7NkJvwMas+dmHBw==",
+      "path": "jquery/1.8.0",
+      "hashPath": "jquery.1.8.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.18": {
       "type": "package",
       "serviceable": true,
@@ -2650,6 +2664,13 @@
       "sha512": "sha512-gTqzsGcmD13HgtNePPcuVHZ/NXWmyV+InJgalW/FhWpII1D7V1k0obIseGlWMeA4G+tZfeGMfXr0klnWbMR/mQ==",
       "path": "microsoft.identitymodel.tokens/6.8.0",
       "hashPath": "microsoft.identitymodel.tokens.6.8.0.nupkg.sha512"
+    },
+    "Microsoft.jQuery.Unobtrusive.Ajax/3.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-udg7ZBszgqxloQ+ShJRONKQAzPnJIlUhKZB+AIvZdKh7CDc5Nms69T9X0hN5i+NqMmQE6njkzdCcEb16lPdJTw==",
+      "path": "microsoft.jquery.unobtrusive.ajax/3.2.6",
+      "hashPath": "microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512"
     },
     "Microsoft.Net.Http.Headers/1.0.2": {
       "type": "package",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "f2iez/WNcL8wb2fFM2B9CwtyLk4n2U4nOOlhRBde6QXWFA4g0eHmIgaymRt0A9TOCb9r9F6dAsKLFP8BEf+RGw==",
+  "dgSpecHash": "6b9pKWuiA5lwFYBZqPecupuEM8CqAvGQOIUKFd71xtOG0EQ31JrQLFLI0jQXtZ7TjUvh9+VgA8fK+tHY3bJ37A==",
   "success": true,
   "projectFilePath": "E:\\KY7\\PRN221\\ProjectFinal\\ProjectFinal\\ProjectFinal.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\win\\.nuget\\packages\\identityserver4\\3.1.2\\identityserver4.3.1.2.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\identityserver4.accesstokenvalidation\\3.0.1\\identityserver4.accesstokenvalidation.3.0.1.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\identityserver4.storage\\3.1.2\\identityserver4.storage.3.1.2.nupkg.sha512",
+    "C:\\Users\\win\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.18\\microsoft.aspnetcore.authentication.jwtbearer.3.1.18.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\3.1.0\\microsoft.aspnetcore.authentication.openidconnect.3.1.0.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.aspnetcore.authorization\\1.0.2\\microsoft.aspnetcore.authorization.1.0.2.nupkg.sha512",
@@ -75,6 +76,7 @@
     "C:\\Users\\win\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.8.0\\microsoft.identitymodel.protocols.6.8.0.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.8.0\\microsoft.identitymodel.protocols.openidconnect.6.8.0.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
+    "C:\\Users\\win\\.nuget\\packages\\microsoft.jquery.unobtrusive.ajax\\3.2.6\\microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.net.http.headers\\1.0.2\\microsoft.net.http.headers.1.0.2.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
