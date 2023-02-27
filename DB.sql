@@ -301,57 +301,57 @@ SET IDENTITY_INSERT [dbo].[InformationProduct] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Product] ON 
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (1, N'Xi Mang Bim Son PC40', N'Xi Mang Bim Son', 1, 1, N'Tan')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (1, N'Xi Mang Bim Son PC40', N'Xi Mang Bim Son', 1, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (2, N'Xi Mang Bim Son PC30', N'Xi Mang Bim Son', 1, 1, N'Tan')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (2, N'Xi Mang Bim Son PC30', N'Xi Mang Bim Son', 1, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (3, N'Xi Mang Cong Thanh PC40', N'Xi Mang Cong Thanh', 1, 1, N'Tan')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (3, N'Xi Mang Cong Thanh PC40', N'Xi Mang Cong Thanh', 1, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (4, N'Xi Mang Tam Diep PCB30', N'Xi Mang Tam Diep', 1, 1, N'Tan')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (4, N'Xi Mang Tam Diep PCB30', N'Xi Mang Tam Diep', 1, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (5, N'Xi Mang But Son PCB40', N'Xi Mang But Son', 1, 0, N'Tan')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (5, N'Xi Mang But Son PCB40', N'Xi Mang But Son', 1, 0)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (6, N'	Xi Mang But Son PCB30', N'Xi Mang But Son', 1, 1, N'Tan')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (6, N'	Xi Mang But Son PCB30', N'Xi Mang But Son', 1, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (7, N'	Xi Mang Vissai PCB40', N'Xi Mang Vissai', 1, 0, N'Tan')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (7, N'	Xi Mang Vissai PCB40', N'Xi Mang Vissai', 1, 0)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (8, N'	Xi Mang Vissai PCB30', N'Xi Mang Vissai', 1, 0, N'Tan')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (8, N'	Xi Mang Vissai PCB30', N'Xi Mang Vissai', 1, 0)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (9, N'D6,8', N'Hoa Phat', 2, 1,N'Kg')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (9, N'D6,8', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (10, N'D6,8', N'Viet Duc', 2, 1,N'Kg')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (10, N'D6,8', N'Viet Duc', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (11, N'D8V', N'Hoa Phat', 2, 1,N'Kg')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (11, N'D8V', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (12, N'D10', N'Hoa Phat', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (12, N'D10', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (13, N'D10', N'Viet Duc', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (13, N'D10', N'Viet Duc', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (14, N'D12', N'Hoa Phat', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (14, N'D12', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (15, N'D12', N'Viet Duc', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (15, N'D12', N'Viet Duc', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (16, N'D14', N'Hoa Phat', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (16, N'D14', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (17, N'D14', N'Viet Duc', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (17, N'D14', N'Viet Duc', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (18, N'D16', N'Hoa Phat', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (18, N'D16', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (19, N'D16', N'Viet Duc', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (19, N'D16', N'Viet Duc', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (20, N'D18', N'Hoa Phat', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (20, N'D18', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (21, N'D18', N'Viet Duc', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (21, N'D18', N'Viet Duc', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (22, N'D20', N'Hoa Phat', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (22, N'D20', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (23, N'D20', N'Viet Duc', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (23, N'D20', N'Viet Duc', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (24, N'D22', N'Hoa Phat', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (24, N'D22', N'Hoa Phat', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (25, N'D22', N'Viet Duc', 2, 1, N'Cay')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (25, N'D22', N'Viet Duc', 2, 1)
 GO
-INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status], [Unit]) VALUES (26, N'D8V', N'Viet Duc', 2, 1,N'Kg')
+INSERT [dbo].[Product] ([ID], [Name], [Producer], [ProductType], [Status]) VALUES (26, N'D8V', N'Viet Duc', 2, 1)
 GO
 SET IDENTITY_INSERT [dbo].[Product] OFF
 GO
