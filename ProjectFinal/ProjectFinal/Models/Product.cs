@@ -7,7 +7,7 @@ namespace ProjectFinal.Models
     {
         public Product()
         {
-            InformationProducts = new HashSet<InformationProduct>();
+            InforImports = new HashSet<InforImport>();
         }
 
         public int Id { get; set; }
@@ -16,8 +16,10 @@ namespace ProjectFinal.Models
         public int ProductType { get; set; }
         public bool Status { get; set; }
         public string? Unit { get; set; }
+        public decimal? SalePrice { get; set; }
+        public int? QuantityInStock { get; set; }
 
         public virtual ProductType ProductTypeNavigation { get; set; } = null!;
-        public virtual ICollection<InformationProduct> InformationProducts { get; set; }
+        public virtual ICollection<InforImport> InforImports { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace ProjectFinal.Models
     {
         public Supplier()
         {
-            InformationProducts = new HashSet<InformationProduct>();
+            InforImports = new HashSet<InforImport>();
         }
 
         public int Id { get; set; }
@@ -16,6 +16,6 @@ namespace ProjectFinal.Models
         public string? Phone { get; set; }
         public string? Address { get; set; }
 
-        public virtual ICollection<InformationProduct> InformationProducts { get; set; }
+        public virtual ICollection<InforImport> InforImports { get; set; }
     }
 }

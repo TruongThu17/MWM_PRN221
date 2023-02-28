@@ -1,8 +1,6 @@
 ﻿@page
 @model ProjectFinal.Pages.Managerment.InventoryControlProductModel
 @{
-    var inforProduct = Model.inforProduct;
-    var listInforProducts = Model.dbContext.InformationProducts.ToList();
     var listProducts = Model.dbContext.Products.ToList();
     var listSuppliers = Model.dbContext.Suppliers.ToList();
 }
@@ -14,10 +12,16 @@
                             <i class="fa fa-align-justify"></i> Kiểm Kho
                         </div>
                         <div class="row">
-                            <input style="width:200px" class="form-control col-lg-5" type="text" placeholder="Tìm Kiếm">  
-                            <p class="col-lg-1"></p>
-                            <a style="width:100px" class="btn btn-block btn-primary col-lg-5" href="#">Thêm Mới</a>
-                         </div>
+                        <div class="dropdown col-lg-4">
+                            <button class="btn btn-info dropdown-toggle" id="dropdownMenu2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Loại Sản Phẩm</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                <button class="dropdown-item" type="button">Xi Măng</button>
+                                <button class="dropdown-item" type="button">Sắt Thép </button>
+                            </div>
+                        </div>
+                        <p class="col-lg-1"></p>
+                        <input style="width:200px" class="form-control col-lg-5" type="text" placeholder="Tìm Kiếm">
+                        </div>
                     </div>
                     
                     <div class="card-body">
@@ -42,7 +46,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                        @if (listInforProducts != null)
+                       @* @if (listInforProducts != null)
                         {
                            @foreach (var ip in listInforProducts)
                             {
@@ -80,7 +84,7 @@
                         else{
 
                             <p>Không có sản phẩm nào được tìm thấy</p>
-                        }
+                        }*@
                             </tbody>
                         </table>
                         <nav>

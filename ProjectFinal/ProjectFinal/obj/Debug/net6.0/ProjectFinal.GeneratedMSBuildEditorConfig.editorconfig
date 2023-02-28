@@ -79,6 +79,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Suppiler/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGlsZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Suppiler/Suppilers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGlsZXJcU3VwcGlsZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -101,10 +105,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Transaction/ReturnImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cUmV0dXJuSW1wb3J0cy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/Transaction/ReturnProducts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cUmV0dXJuUHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/KY7/PRN221/ProjectFinal/ProjectFinal/Pages/_ViewImports.cshtml]

@@ -5,6 +5,11 @@ namespace ProjectFinal.Models
 {
     public partial class User
     {
+        public User()
+        {
+            ImportProducts = new HashSet<ImportProduct>();
+        }
+
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
         public int? Role { get; set; }
@@ -16,5 +21,6 @@ namespace ProjectFinal.Models
         public bool Status { get; set; }
 
         public virtual Role? RoleNavigation { get; set; }
+        public virtual ICollection<ImportProduct> ImportProducts { get; set; }
     }
 }

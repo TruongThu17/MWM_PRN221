@@ -17,7 +17,8 @@ namespace ProjectFinal.Models
         }
 
         public virtual DbSet<Customer> Customers { get; set; } = null!;
-        public virtual DbSet<InformationProduct> InformationProducts { get; set; } = null!;
+        public virtual DbSet<ImportProduct> ImportProducts { get; set; } = null!;
+        public virtual DbSet<InforImport> InforImports { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
         public virtual DbSet<ProductType> ProductTypes { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
@@ -52,36 +53,61 @@ namespace ProjectFinal.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<InformationProduct>(entity =>
+            modelBuilder.Entity<ImportProduct>(entity =>
             {
-                entity.ToTable("InformationProduct");
+                entity.ToTable("ImportProduct");
 
                 entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.UserName)
+                    .HasMaxLength(150)
+                    .IsUnicode(false)
+                    .HasColumnName("userName");
+
+                entity.HasOne(d => d.UserNameNavigation)
+                    .WithMany(p => p.ImportProducts)
+                    .HasForeignKey(d => d.UserName)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ImportProduct_User");
+            });
+
+            modelBuilder.Entity<InforImport>(entity =>
+            {
+                entity.HasKey(e => new { e.Idimport, e.Idproduct });
+
+                entity.ToTable("InforImport");
+
+                entity.Property(e => e.Idimport).HasColumnName("IDImport");
+
+                entity.Property(e => e.Idproduct).HasColumnName("IDProduct");
 
                 entity.Property(e => e.DateExpiry).HasColumnType("date");
 
                 entity.Property(e => e.DateImport).HasColumnType("date");
 
-                entity.Property(e => e.Note).HasMaxLength(200);
+                entity.Property(e => e.ImportPrice).HasColumnType("money");
 
                 entity.Property(e => e.Shelves)
                     .HasMaxLength(150)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Unit)
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.InformationProducts)
-                    .HasForeignKey(d => d.ProductId)
+                entity.HasOne(d => d.IdimportNavigation)
+                    .WithMany(p => p.InforImports)
+                    .HasForeignKey(d => d.Idimport)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_InformationProduct_Product");
+                    .HasConstraintName("FK_InforImport_ImportProduct");
+
+                entity.HasOne(d => d.IdproductNavigation)
+                    .WithMany(p => p.InforImports)
+                    .HasForeignKey(d => d.Idproduct)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InforImport_Product");
 
                 entity.HasOne(d => d.Supplier)
-                    .WithMany(p => p.InformationProducts)
+                    .WithMany(p => p.InforImports)
                     .HasForeignKey(d => d.SupplierId)
-                    .HasConstraintName("FK_InformationProduct_Supplier");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InforImport_Supplier");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -93,6 +119,8 @@ namespace ProjectFinal.Models
                 entity.Property(e => e.Name).HasMaxLength(250);
 
                 entity.Property(e => e.Producer).HasMaxLength(250);
+
+                entity.Property(e => e.SalePrice).HasColumnType("money");
 
                 entity.Property(e => e.Unit).HasMaxLength(250);
 

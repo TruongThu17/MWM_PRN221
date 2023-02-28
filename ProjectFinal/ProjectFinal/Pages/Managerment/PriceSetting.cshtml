@@ -1,20 +1,8 @@
 ﻿@page
 @model ProjectFinal.Pages.Managerment.PriceSettingModel
 @{
-    var inforProduct = Model.inforProduct;
-    var listInforProducts = Model.dbContext.InformationProducts.ToList();
     var listProducts = Model.dbContext.Products.ToList();
-    var listSuppliers = Model.dbContext.Suppliers.ToList();
-    var ProductsOfSettingPrices = Model.GetAllProductOfSettingPrice();
 }
-<script>
-       var addButton = document.getElementById("addNewButton");
-    var newItemForm = document.getElementById("newItemForm");
-
-    addButton.addEventListener("click", function() {
-        newItemForm.style.display = "block";
-    });
-</script>   
 
 <div class="row">
     <div class="col-lg-12">
@@ -24,7 +12,7 @@
                     <i class="fa fa-align-justify"></i> Thiết Lập Giá
                 </div>
                 <div class="row">
-                    <div class="dropdown col-lg-3">
+                    <div class="dropdown col-lg-4">
                         <button class="btn btn-info dropdown-toggle" id="dropdownMenu2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Loại Sản Phẩm</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
                             <button class="dropdown-item" type="button">Xi Măng</button>
@@ -32,10 +20,7 @@
                         </div>
                     </div>
                     <p class="col-lg-1"></p>
-                    <input style="width:200px" class="form-control col-lg-4" type="text" placeholder="Tìm Kiếm">
-                    <p class="col-lg-1"></p>
-                    @*<a style="width:100px" class="btn btn-block btn-primary col-lg-3" href="#">Thêm Mới</a>*@
-                    <button id="addNewButton">Thêm mới</button>
+                    <input style="width:200px" class="form-control col-lg-5" type="text" placeholder="Tìm Kiếm">
 
                 </div>
             </div>
@@ -53,19 +38,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (ProductsOfSettingPrices != null)
+                        @if (listProducts != null)
                         {
-                            @foreach (dynamic pst in ProductsOfSettingPrices)
+                            @foreach (var p in listProducts)
                             {
-                                @if (@pst.Status == true)
+                                @if (@p.Status == true)
                                 {
                                     <tr>
-                                        <td>@pst.Id</td>
-                                        <td>@pst.Name</td>
+                                        <td>@p.Id</td>
+                                        <td>@p.Name</td>
                                         <td>
-                                            <input class="form-control" value="@pst.SalePrice" type="text">
+                                            <input class="form-control" value="@p.SalePrice" type="text">
                                         </td>
-                                        <td>@pst.Unit</td>
+                                        <td>@p.Unit</td>
                                         <td>
                                             <p>Đang Kinh Doanh</p>
                                         </td>
@@ -114,11 +99,4 @@
     </div>
     <!-- /.col-->
 </div>
-<!--New form-->
-<div id="newItemForm" style="display:none;">
-    <form>
-         <input style="width:200px" class="form-control col-lg-4" type="text" placeholder="Tìm Kiếm">
-          <input style="width:200px" class="form-control col-lg-4" type="text" placeholder="Tìm Kiếm">
-        <!-- Các trường nhập liệu của form -->
-    </form>
-</div>
+
