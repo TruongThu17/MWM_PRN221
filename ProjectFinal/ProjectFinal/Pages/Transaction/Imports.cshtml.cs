@@ -13,7 +13,41 @@ namespace ProjectFinal.Pages.Transaction
         {
             this.dbContext = dbContext;
         }
+        //public List<dynamic> GetAllProductOfSettingPrice()
+        //{
+        //    var query = (from a in dbContext.Users
+        //                 join b in dbContext.ImportProducts on a.Username equals b.UserName
+        //                 join c in dbContext.InforImports on b.Id equals c.Idimport
+        //                 group new { a, b, c} by new { a.Name, a.Username, b.Id, c.DateImport  } into g
+        //                 orderby g.Key.Id
+        //                 select new
+        //                 {
 
+        //                     g.Key.Id,
+        //                     g.Key.Name,
+        //                     g.Key.Producer,
+        //                     g.Key.Status,
+        //                     g.Key.Unit,
+        //                     g.Key.SalePrice
+        //                 });
+
+        //    List<dynamic> dynamicList = new List<dynamic>();
+        //    foreach (var obj in query)
+        //    {
+        //        dynamic dynamicObj = new System.Dynamic.ExpandoObject();
+
+        //        // Thêm từng thuộc tính vào đối tượng động
+        //        dynamicObj.Id = obj.Id;
+        //        dynamicObj.Name = obj.Name;
+        //        dynamicObj.Producer = obj.Producer;
+        //        dynamicObj.Status = obj.Status;
+        //        dynamicObj.Unit = obj.Unit;
+        //        dynamicObj.SalePrice = obj.SalePrice;
+
+        //        dynamicList.Add(dynamicObj);
+        //    }
+        //    return dynamicList;
+        //}
         public void OnGet()
         {
             // Thực hiện các hoạt động khi người dùng truy cập trang Razor Pages

@@ -1,4 +1,98 @@
 ﻿@page
 @model ProjectFinal.Pages.Transaction.OrdersModel
 @{
+    var listBilleds = Model.dbContext.Billeds.ToList();
+    var listUsers = Model.dbContext.Users.ToList();
+    var listCustomers = Model.dbContext.Customers.ToList();
 }
+ <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <i class="fa fa-align-justify"></i> Danh Sách Hóa Đơn Mua Hàng
+                        </div>
+                        <div class="row">
+                            <input style="width:200px" class="form-control col-lg-5" type="text" placeholder="Tìm Kiếm">  
+                            <p class="col-lg-1"></p>
+                            <a style="width:100px" class="btn btn-block btn-primary col-lg-5" href="#">Thêm Mới</a>
+                         </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                            <thead>
+                                 <tr>
+                                    <th>ID</th>
+                                    <th>UserName</th>
+                                    <th>Tên Người Nhập</th>
+                                    <th>Ngày Nhập </th>
+                                    <th>Khách Hàng</th>
+                                    <th>Tổng Hóa Đơn</th>
+                                    <th>Thanh Tóan</th>
+                                    <th>Nợ</th>
+                                    <th>Giao Hàng</th>
+                                    <th>Hành Động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        @if (listBilleds != null)
+                        {
+                           @foreach (var p in listBilleds)
+                            {
+                                @if (@p.Status!=true)
+                                {
+                                    <tr>
+                                    <td>@p.Id</td>
+                                    <td>@p.Username</td>
+                                    <td>@listUsers.SingleOrDefault(e => e.Username == p.Username).Name</td>
+                                    <td>@p.DateImport</td>
+                                    <td>@listCustomers.SingleOrDefault(e => e.Id == p.Idcustomer).Name</td>
+                                    <td>@p.TotalBill</td>
+                                    <td>@p.Deposit</td>
+                                    <td>@p.Debt</td>
+                                    <td>Chưa Giao Hàng</td>
+                                    <td style="width: 150px">
+                                        <div class="d-flex justify-content-around">
+                                            <a style="width:50px; height: 30px" class="btn btn-success" href="#">Chi Tiết</a>
+                                            <a style="width:50px; height: 30px" class="btn btn-warning" href="#">Sửa</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                }
+                                
+                            }  
+                        }
+                        else{
+
+                            <p>Không có sản phẩm nào được tìm thấy</p>
+                        }
+                            </tbody>
+                        </table>
+                        <nav>
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Prev</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">4</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>

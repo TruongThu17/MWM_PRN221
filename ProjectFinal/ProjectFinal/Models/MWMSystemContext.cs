@@ -16,9 +16,11 @@ namespace ProjectFinal.Models
         {
         }
 
+        public virtual DbSet<Billed> Billeds { get; set; } = null!;
         public virtual DbSet<Customer> Customers { get; set; } = null!;
         public virtual DbSet<ImportProduct> ImportProducts { get; set; } = null!;
         public virtual DbSet<InforImport> InforImports { get; set; } = null!;
+        public virtual DbSet<ListProductBill> ListProductBills { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
         public virtual DbSet<ProductType> ProductTypes { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
@@ -36,6 +38,39 @@ namespace ProjectFinal.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Billed>(entity =>
+            {
+                entity.ToTable("Billed");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.DateImport).HasColumnType("date");
+
+                entity.Property(e => e.Debt).HasColumnType("money");
+
+                entity.Property(e => e.Deposit).HasColumnType("money");
+
+                entity.Property(e => e.Idcustomer).HasColumnName("IDCustomer");
+
+                entity.Property(e => e.TotalBill).HasColumnType("money");
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdcustomerNavigation)
+                    .WithMany(p => p.Billeds)
+                    .HasForeignKey(d => d.Idcustomer)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Billed_Customer");
+
+                entity.HasOne(d => d.UsernameNavigation)
+                    .WithMany(p => p.Billeds)
+                    .HasForeignKey(d => d.Username)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Billed_User");
+            });
+
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.ToTable("Customer");
@@ -59,10 +94,19 @@ namespace ProjectFinal.Models
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.DateImport).HasColumnType("date");
+
+                entity.Property(e => e.TotalBill).HasColumnType("money");
+
                 entity.Property(e => e.UserName)
                     .HasMaxLength(150)
                     .IsUnicode(false)
                     .HasColumnName("userName");
+
+                entity.HasOne(d => d.SupplierNavigation)
+                    .WithMany(p => p.ImportProducts)
+                    .HasForeignKey(d => d.Supplier)
+                    .HasConstraintName("FK_ImportProduct_Supplier");
 
                 entity.HasOne(d => d.UserNameNavigation)
                     .WithMany(p => p.ImportProducts)
@@ -108,6 +152,27 @@ namespace ProjectFinal.Models
                     .HasForeignKey(d => d.SupplierId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_InforImport_Supplier");
+            });
+
+            modelBuilder.Entity<ListProductBill>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("ListProductBill");
+
+                entity.Property(e => e.Idbill).HasColumnName("IDBill");
+
+                entity.Property(e => e.Idproduct).HasColumnName("IDProduct");
+
+                entity.HasOne(d => d.IdbillNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.Idbill)
+                    .HasConstraintName("FK_ListProductBill_Billed");
+
+                entity.HasOne(d => d.IdproductNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.Idproduct)
+                    .HasConstraintName("FK_ListProductBill_Product");
             });
 
             modelBuilder.Entity<Product>(entity =>

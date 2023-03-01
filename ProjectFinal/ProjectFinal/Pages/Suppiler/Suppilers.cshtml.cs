@@ -12,8 +12,10 @@ namespace ProjectFinal.Pages.Suppiler
         {
             this.dbContext = dbContext;
         }
+        
         public void OnGet()
         {
+            
         }
         public IActionResult OnPost(string name, string email, string phone, string address)
         {

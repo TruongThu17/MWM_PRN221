@@ -1,8 +1,9 @@
 ﻿@page
 @model ProjectFinal.Pages.Transaction.ImportsModel
 @{
-
-
+    var listImport = Model.dbContext.ImportProducts.ToList();
+    var listUser = Model.dbContext.Users.ToList();
+    var listSupplier = Model.dbContext.Suppliers.ToList();
 }
  <div class="row">
             <div class="col-lg-12">
@@ -23,31 +24,25 @@
                             <thead>
                                  <tr>
                                     <th>ID</th>
-                                    <th>Tên Sản Phẩm</th>
-                                    <th>Nhà Sản Xuất</th>
-                                    <th>Loại Sản Phẩm</th>
-                                    <th>Trạng Thái</th>
+                                    <th>UserName</th>
+                                    <th>Tên Người Nhập</th>
+                                    <th>Ngày Nhập </th>
+                                    <th>Nhà Phân Phối</th>
                                     <th>Hành Động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                        @*@if (listProducts != null)
+                        @if (listImport != null)
                         {
-                           @foreach (var p in listProducts)
+                           @foreach (var p in listImport)
                             {
                                 <tr>
                                     <td>@p.Id</td>
-                                    <td>@p.Name</td>
-                                    <td>@p.Producer</td>
-                                    <td>@p.ProductTypeNavigation.Name</td>
-                                    <td>
-                                        @if(@p.Status==true){
-                                            <p>Đang bán</p>
-                                        }
-                                        else{
-                                            <p>Ngưng bán</p>
-                                        }
-                                    </td>
+                                    <td>@p.UserName</td>
+                                    <td>@listUser.SingleOrDefault(e => e.Username == p.UserName).Name</td>
+                                    <td>@p.DateImport</td>
+                                    <td>@listSupplier.SingleOrDefault(e => e.Id == p.Supplier).Name</td>
+                                    <td>@p.TotalBill</td>
                                     <td style="width: 150px">
                                         <div class="d-flex justify-content-around">
                                             <a style="width:50px; height: 30px" class="btn btn-success" href="#">Xem</a>
@@ -60,7 +55,7 @@
                         else{
 
                             <p>Không có sản phẩm nào được tìm thấy</p>
-                        }*@
+                        }
                             </tbody>
                         </table>
                         <nav>

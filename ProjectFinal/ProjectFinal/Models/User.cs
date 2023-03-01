@@ -7,6 +7,7 @@ namespace ProjectFinal.Models
     {
         public User()
         {
+            Billeds = new HashSet<Billed>();
             ImportProducts = new HashSet<ImportProduct>();
         }
 
@@ -21,6 +22,7 @@ namespace ProjectFinal.Models
         public bool Status { get; set; }
 
         public virtual Role? RoleNavigation { get; set; }
+        public virtual ICollection<Billed> Billeds { get; set; }
         public virtual ICollection<ImportProduct> ImportProducts { get; set; }
     }
 }
