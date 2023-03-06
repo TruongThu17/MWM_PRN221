@@ -8,6 +8,7 @@ namespace ProjectFinal.Models
         public Customer()
         {
             Billeds = new HashSet<Billed>();
+            Returns = new HashSet<Return>();
         }
 
         public int Id { get; set; }
@@ -17,5 +18,6 @@ namespace ProjectFinal.Models
         public string? Note { get; set; }
 
         public virtual ICollection<Billed> Billeds { get; set; }
+        public virtual ICollection<Return> Returns { get; set; }
     }
 }

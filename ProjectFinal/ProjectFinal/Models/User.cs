@@ -9,6 +9,8 @@ namespace ProjectFinal.Models
         {
             Billeds = new HashSet<Billed>();
             ImportProducts = new HashSet<ImportProduct>();
+            ReturnImportProducts = new HashSet<ReturnImportProduct>();
+            Returns = new HashSet<Return>();
         }
 
         public string Username { get; set; } = null!;
@@ -24,5 +26,7 @@ namespace ProjectFinal.Models
         public virtual Role? RoleNavigation { get; set; }
         public virtual ICollection<Billed> Billeds { get; set; }
         public virtual ICollection<ImportProduct> ImportProducts { get; set; }
+        public virtual ICollection<ReturnImportProduct> ReturnImportProducts { get; set; }
+        public virtual ICollection<Return> Returns { get; set; }
     }
 }

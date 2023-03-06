@@ -20,9 +20,13 @@ namespace ProjectFinal.Models
         public virtual DbSet<Customer> Customers { get; set; } = null!;
         public virtual DbSet<ImportProduct> ImportProducts { get; set; } = null!;
         public virtual DbSet<InforImport> InforImports { get; set; } = null!;
-        public virtual DbSet<ListProductBill> ListProductBills { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
         public virtual DbSet<ProductType> ProductTypes { get; set; } = null!;
+        public virtual DbSet<ProductsInBill> ProductsInBills { get; set; } = null!;
+        public virtual DbSet<ProductsReturn> ProductsReturns { get; set; } = null!;
+        public virtual DbSet<Return> Returns { get; set; } = null!;
+        public virtual DbSet<ReturnImport> ReturnImports { get; set; } = null!;
+        public virtual DbSet<ReturnImportProduct> ReturnImportProducts { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Supplier> Suppliers { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
@@ -31,8 +35,11 @@ namespace ProjectFinal.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server=DESKTOP-PVD65DI;database=MWMSystem;uid=sa;password=123456;Integrated Security=True;TrustServerCertificate=true");
+                var builder = new ConfigurationBuilder()
+                                 .SetBasePath(Directory.GetCurrentDirectory())
+                                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                IConfigurationRoot configuration = builder.Build();
+                optionsBuilder.UseSqlServer(configuration.GetConnectionString("MWMSystem"));
             }
         }
 
@@ -154,27 +161,6 @@ namespace ProjectFinal.Models
                     .HasConstraintName("FK_InforImport_Supplier");
             });
 
-            modelBuilder.Entity<ListProductBill>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("ListProductBill");
-
-                entity.Property(e => e.Idbill).HasColumnName("IDBill");
-
-                entity.Property(e => e.Idproduct).HasColumnName("IDProduct");
-
-                entity.HasOne(d => d.IdbillNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.Idbill)
-                    .HasConstraintName("FK_ListProductBill_Billed");
-
-                entity.HasOne(d => d.IdproductNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.Idproduct)
-                    .HasConstraintName("FK_ListProductBill_Product");
-            });
-
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product");
@@ -203,6 +189,139 @@ namespace ProjectFinal.Models
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Name).HasMaxLength(150);
+            });
+
+            modelBuilder.Entity<ProductsInBill>(entity =>
+            {
+                entity.HasKey(e => new { e.Idbill, e.Idproduct });
+
+                entity.ToTable("ProductsInBill");
+
+                entity.Property(e => e.Idbill).HasColumnName("IDBill");
+
+                entity.Property(e => e.Idproduct).HasColumnName("IDProduct");
+
+                entity.HasOne(d => d.IdbillNavigation)
+                    .WithMany(p => p.ProductsInBills)
+                    .HasForeignKey(d => d.Idbill)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductsInBill_Billed");
+
+                entity.HasOne(d => d.IdproductNavigation)
+                    .WithMany(p => p.ProductsInBills)
+                    .HasForeignKey(d => d.Idproduct)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductsInBill_Product");
+            });
+
+            modelBuilder.Entity<ProductsReturn>(entity =>
+            {
+                entity.HasKey(e => new { e.Idreturn, e.Idbill, e.Idproduct });
+
+                entity.ToTable("ProductsReturn");
+
+                entity.Property(e => e.Idreturn).HasColumnName("IDReturn");
+
+                entity.Property(e => e.Idbill).HasColumnName("IDBill");
+
+                entity.Property(e => e.Idproduct).HasColumnName("IDProduct");
+
+                entity.HasOne(d => d.IdreturnNavigation)
+                    .WithMany(p => p.ProductsReturns)
+                    .HasForeignKey(d => d.Idreturn)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductsReturn_Return");
+
+                entity.HasOne(d => d.Id)
+                    .WithMany(p => p.ProductsReturns)
+                    .HasForeignKey(d => new { d.Idbill, d.Idproduct })
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductsReturn_ProductsInBill");
+            });
+
+            modelBuilder.Entity<Return>(entity =>
+            {
+                entity.ToTable("Return");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Date)
+                    .HasColumnType("date")
+                    .HasColumnName("date");
+
+                entity.Property(e => e.Idbill).HasColumnName("IDBill");
+
+                entity.Property(e => e.Idcustomer).HasColumnName("IDCustomer");
+
+                entity.Property(e => e.Totalbill)
+                    .HasColumnType("money")
+                    .HasColumnName("totalbill");
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(150)
+                    .IsUnicode(false)
+                    .HasColumnName("username");
+
+                entity.HasOne(d => d.IdbillNavigation)
+                    .WithMany(p => p.Returns)
+                    .HasForeignKey(d => d.Idbill)
+                    .HasConstraintName("FK_Return_Billed");
+
+                entity.HasOne(d => d.IdcustomerNavigation)
+                    .WithMany(p => p.Returns)
+                    .HasForeignKey(d => d.Idcustomer)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Return_Customer");
+
+                entity.HasOne(d => d.UsernameNavigation)
+                    .WithMany(p => p.Returns)
+                    .HasForeignKey(d => d.Username)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Return_User");
+            });
+
+            modelBuilder.Entity<ReturnImport>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("ReturnImport");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+            });
+
+            modelBuilder.Entity<ReturnImportProduct>(entity =>
+            {
+                entity.ToTable("ReturnImportProduct");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.IdimportProduct).HasColumnName("IDImportProduct");
+
+                entity.Property(e => e.Totalbill)
+                    .HasColumnType("money")
+                    .HasColumnName("totalbill");
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(150)
+                    .IsUnicode(false)
+                    .HasColumnName("username");
+
+                entity.HasOne(d => d.IdimportProductNavigation)
+                    .WithMany(p => p.ReturnImportProducts)
+                    .HasForeignKey(d => d.IdimportProduct)
+                    .HasConstraintName("FK_ReturnImportProduct_ImportProduct");
+
+                entity.HasOne(d => d.SuppilerNavigation)
+                    .WithMany(p => p.ReturnImportProducts)
+                    .HasForeignKey(d => d.Suppiler)
+                    .HasConstraintName("FK_ReturnImportProduct_Supplier");
+
+                entity.HasOne(d => d.UsernameNavigation)
+                    .WithMany(p => p.ReturnImportProducts)
+                    .HasForeignKey(d => d.Username)
+                    .HasConstraintName("FK_ReturnImportProduct_User");
             });
 
             modelBuilder.Entity<Role>(entity =>

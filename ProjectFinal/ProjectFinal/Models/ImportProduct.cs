@@ -8,6 +8,7 @@ namespace ProjectFinal.Models
         public ImportProduct()
         {
             InforImports = new HashSet<InforImport>();
+            ReturnImportProducts = new HashSet<ReturnImportProduct>();
         }
 
         public int Id { get; set; }
@@ -19,5 +20,6 @@ namespace ProjectFinal.Models
         public virtual Supplier? SupplierNavigation { get; set; }
         public virtual User UserNameNavigation { get; set; } = null!;
         public virtual ICollection<InforImport> InforImports { get; set; }
+        public virtual ICollection<ReturnImportProduct> ReturnImportProducts { get; set; }
     }
 }

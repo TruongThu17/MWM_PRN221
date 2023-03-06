@@ -6,16 +6,21 @@ namespace ProjectFinal.Pages.Suppiler
 {
     public class SuppilersModel : PageModel
     {
-        public Supplier suppiler { get; set; }
+        public List<Supplier> listSuppilers { get; set; }
         public readonly MWMSystemContext dbContext;
         public SuppilersModel(MWMSystemContext dbContext)
         {
             this.dbContext = dbContext;
         }
-        
-        public void OnGet()
+
+        public void OnGet(string searchString)
         {
-            
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                listSuppilers = dbContext.Suppliers
+                    .Where(dt => dt.Name.Contains(searchString))
+                    .ToList();
+            }
         }
         public IActionResult OnPost(string name, string email, string phone, string address)
         {

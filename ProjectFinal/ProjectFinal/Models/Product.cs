@@ -8,6 +8,7 @@ namespace ProjectFinal.Models
         public Product()
         {
             InforImports = new HashSet<InforImport>();
+            ProductsInBills = new HashSet<ProductsInBill>();
         }
 
         public int Id { get; set; }
@@ -21,5 +22,6 @@ namespace ProjectFinal.Models
 
         public virtual ProductType ProductTypeNavigation { get; set; } = null!;
         public virtual ICollection<InforImport> InforImports { get; set; }
+        public virtual ICollection<ProductsInBill> ProductsInBills { get; set; }
     }
 }

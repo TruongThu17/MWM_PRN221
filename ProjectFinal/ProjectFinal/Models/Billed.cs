@@ -5,6 +5,12 @@ namespace ProjectFinal.Models
 {
     public partial class Billed
     {
+        public Billed()
+        {
+            ProductsInBills = new HashSet<ProductsInBill>();
+            Returns = new HashSet<Return>();
+        }
+
         public int Id { get; set; }
         public string Username { get; set; } = null!;
         public DateTime? DateImport { get; set; }
@@ -16,5 +22,7 @@ namespace ProjectFinal.Models
 
         public virtual Customer IdcustomerNavigation { get; set; } = null!;
         public virtual User UsernameNavigation { get; set; } = null!;
+        public virtual ICollection<ProductsInBill> ProductsInBills { get; set; }
+        public virtual ICollection<Return> Returns { get; set; }
     }
 }
