@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6b9pKWuiA5lwFYBZqPecupuEM8CqAvGQOIUKFd71xtOG0EQ31JrQLFLI0jQXtZ7TjUvh9+VgA8fK+tHY3bJ37A==",
+  "dgSpecHash": "v2NfhwQhqEIfk/UtVzkKeIFNjZbZ+i1fTSR+QR52d95xrrBAGCuJt7TbAkkXyjXr7HPIC8oHnBL7gW/0oitMeQ==",
   "success": true,
-  "projectFilePath": "E:\\KY7\\PRN221\\ProjectFinal\\ProjectFinal\\ProjectFinal.csproj",
+  "projectFilePath": "E:\\KY7\\PRN221\\Project\\ProjectFinal\\ProjectFinal\\ProjectFinal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\win\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\win\\.nuget\\packages\\identitymodel\\4.1.1\\identitymodel.4.1.1.nupkg.sha512",

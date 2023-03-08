@@ -1,8 +1,20 @@
 ﻿@page
 @model ProjectFinal.Pages.Suppiler.SuppilersModel
 @{
-    var listSuppilers = Model.listSuppilers ?? Model.dbContext.Suppliers.ToList();
+    ViewData["Title"] = "Doi Tac";
+    int i = 0;
 }
+@{
+    var pageingmodel = new Helper.PagingModel()
+            {
+                currentpage = Model.currentPage,
+                countpages = Model.countPages,
+                generateUrl = (int? p) => @Url.Page("/Suppiler/Suppilers", new { p = p})
+            };
+
+}
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -12,26 +24,36 @@
             <div class="card-header d-flex justify-content-between">
                 <div>
                     <i class="fa fa-align-justify"></i> Danh Sách Nhà Phân Phối
-                </div>
-
+                </div>  
                 <div class="row">
                     <form method="get">
+                        <div class="row">
+                            <input style="width: 200px;" type="text" class="form-control" value="@Model.searchString" name="searchString" placeholder="Nhập tên đối tác...">       
+                            <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-primary mx-3" data-toggle="modal" data-target="#createModal">
+                            Thêm Mới
+                    </button>
+                </div>
+                @*<div class="row">
+                    <form method="get">
                     <div class="col-lg-8">
-                        <input type="text" class="form-control" name="searchString" placeholder="Nhập tên đối tác...">
-                        @*<div class="row">
+                        
+                        <div class="row">
                                 <div class="form-group col-lg-8">
-                                    
+                                    <input type="text" class="form-control" value="@Model.searchString" name="searchString" placeholder="Nhập tên đối tác...">
                                 </div>
                                 <div class="col-lg-4">
                                     <button type="submit" class="btn btn-primary ">Tìm kiếm</button>
                                 </div>
-                        </div>*@
+                        </div>
                     </div>
                     </form>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
                         Thêm Mới
                     </button>
-                </div>
+                </div>*@
             </div>
             <div class="card-body">
                 <table class="table table-responsive-sm table-bordered table-striped table-sm">
@@ -46,9 +68,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (listSuppilers != null)
+                        @if (Model.Suppliers != null&& Model.Suppliers.Any())
                         {
-                            @foreach (var s in listSuppilers)
+                            @foreach (var s in Model.Suppliers)
                             {
                                 <tr>
                                     <td>@s.Id</td>
@@ -58,8 +80,8 @@
                                     <td>@s.Address</td>
                                     <td style="width: 150px">
                                         <div class="d-flex justify-content-around">
-                                            <button style="width:50px; height: 30px" class="btn btn-success" data-toggle="modalView" data-target="#viewModal">Xem</button>
-                                            <button style="width:50px; height: 30px" class="btn btn-warning" data-toggle="modalUpdate" data-target="#updateModal">Sửa</button>
+                                            <a style="width:50px; height: 30px" class="btn btn-success mx-2 my-2" asp-page ="./Detail"  asp-route-id="@s.Id">Xem</a>
+                                            <a style="width:50px; height: 30px" class="btn btn-warning mx-2 my-2" asp-page="./Update" asp-route-id="@s.Id">Sửa</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -72,32 +94,12 @@
 
                     </tbody>
                 </table>
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#">Prev</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+                    <partial name="_Page" model="@pageingmodel"/>
             </div>
         </div>
     </div>
     <!-- /.col-->
+
 </div>
 <!-- Add new supplier -->
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">

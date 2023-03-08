@@ -1,4 +1,5 @@
 using AdminWebCore.Configurations.IdentityServer;
+using Microsoft.EntityFrameworkCore;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using ProjectFinal.Models;
@@ -7,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
-builder.Services.AddSingleton<MWMSystemContext>();
+//builder.Services.AddSingleton<MWMSystemContext>();
+builder.Services.AddDbContext<MWMSystemContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("MWMSystem")
+    ));
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 

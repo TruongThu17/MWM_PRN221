@@ -10022,11 +10022,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\KY7\\PRN221\\ProjectFinal\\ProjectFinal\\ProjectFinal.csproj",
+      "projectUniqueName": "E:\\KY7\\PRN221\\Project\\ProjectFinal\\ProjectFinal\\ProjectFinal.csproj",
       "projectName": "ProjectFinal",
-      "projectPath": "E:\\KY7\\PRN221\\ProjectFinal\\ProjectFinal\\ProjectFinal.csproj",
+      "projectPath": "E:\\KY7\\PRN221\\Project\\ProjectFinal\\ProjectFinal\\ProjectFinal.csproj",
       "packagesPath": "C:\\Users\\win\\.nuget\\packages\\",
-      "outputPath": "E:\\KY7\\PRN221\\ProjectFinal\\ProjectFinal\\obj\\",
+      "outputPath": "E:\\KY7\\PRN221\\Project\\ProjectFinal\\ProjectFinal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -21,5 +21,10 @@ namespace ProjectFinal.Models
         public virtual ICollection<ImportProduct> ImportProducts { get; set; }
         public virtual ICollection<InforImport> InforImports { get; set; }
         public virtual ICollection<ReturnImportProduct> ReturnImportProducts { get; set; }
+
+        public static implicit operator Supplier(Customer v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
