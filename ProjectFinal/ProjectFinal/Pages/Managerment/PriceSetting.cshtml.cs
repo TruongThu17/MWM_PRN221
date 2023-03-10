@@ -9,50 +9,47 @@ namespace ProjectFinal.Pages.Managerment
     {
 
         public readonly MWMSystemContext dbContext;
-
+        public const int ITEMS_PER_PAGE = 10;
+        [BindProperty(SupportsGet = true, Name = "p")]
+        public int currentPage { get; set; }
+        public int countPages { get; set; }
+        public List<Models.Product> Products { get; set; }
+        public List<Models.ProductType> ProductTypes { get; set; }
         public PriceSettingModel(MWMSystemContext dbContext)
         {
             this.dbContext = dbContext;
         }
-
-        //public List<dynamic> GetAllProductOfSettingPrice()
-        //{
-        //    var query = (from a in dbContext.Products
-        //                join b in dbContext.InformationProducts on a.Id equals b.ProductId
-        //                 group new { a, b } by new { a.Id, a.Name, a.Producer, a.Status, a.Unit, b.SalePrice } into g
-        //                orderby g.Key.Id
-        //                select new
-        //                {
-
-        //                    g.Key.Id,
-        //                    g.Key.Name,
-        //                    g.Key.Producer,
-        //                    g.Key.Status,
-        //                    g.Key.Unit,
-        //                    g.Key.SalePrice
-        //                });
-
-        //    List<dynamic> dynamicList = new List<dynamic>();
-        //    foreach (var obj in query)
-        //    {
-        //        dynamic dynamicObj = new ExpandoObject();
-
-        //        // Thêm từng thuộc tính vào đối tượng động
-        //        dynamicObj.Id = obj.Id;
-        //        dynamicObj.Name = obj.Name;
-        //        dynamicObj.Producer = obj.Producer;
-        //        dynamicObj.Status = obj.Status;
-        //        dynamicObj.Unit = obj.Unit;
-        //        dynamicObj.SalePrice = obj.SalePrice;
-
-        //        dynamicList.Add(dynamicObj);
-        //    }
-        //    return dynamicList;
-        //}
-
-
+        [BindProperty(SupportsGet = true)]
+        public string searchString { get; set; }
         public void OnGet()
         {
+            int totalProduct = dbContext.Products.Count();
+            countPages = (int)Math.Ceiling((double)totalProduct / ITEMS_PER_PAGE);
+
+            if (currentPage < 1)
+            {
+                currentPage = 1;
+            }
+            if (currentPage > countPages)
+            {
+                currentPage = countPages;
+            }
+
+            var pro = (from a in dbContext.Products
+                       orderby a.Id ascending
+                       select a)
+                       .Skip((currentPage - 1) * 10)
+                       .Take(ITEMS_PER_PAGE);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                Products = pro.Where(a => a.Name.Contains(searchString)).ToList();
+            }
+            else
+            {
+                Products = pro.ToList();
+            }
+
         }
     }
 }

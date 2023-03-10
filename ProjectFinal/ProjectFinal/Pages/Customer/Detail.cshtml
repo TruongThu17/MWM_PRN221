@@ -1,0 +1,54 @@
+﻿@page
+@model ProjectFinal.Pages.Customer.DetailModel
+@{
+    ViewData["Title"] = "Chi Tiết";
+}
+<div class="row" style="height:100px;">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Chi Tiết Thông Tin Khách Hàng
+                </div>
+            </div>
+            <div class="p-3">
+                <dl class="row">
+                    <dt class="col-sm-2 ">
+                        @Html.DisplayNameFor(model => model.Cus.Name)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cus.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Cus.Address)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cus.Address)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Cus.Phone)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cus.Phone)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Cus.Note)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cus.Note)
+                    </dd>
+                    
+                </dl>
+                <div class="mt-5">
+                    <a asp-page="./Edit" asp-route-id="@Model.Cus?.Id">Sửa</a> |
+                    <a asp-page="./Customers">Danh Sách</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

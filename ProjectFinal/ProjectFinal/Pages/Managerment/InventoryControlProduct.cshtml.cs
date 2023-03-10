@@ -6,62 +6,44 @@ namespace ProjectFinal.Pages.Managerment
 {
     public class InventoryControlProductModel : PageModel
     {
-        public readonly MWMSystemContext dbContext;
-
+         public readonly MWMSystemContext dbContext;
+        public const int ITEMS_PER_PAGE = 10;
+        [BindProperty(SupportsGet = true, Name = "p")]
+        public int currentPage { get; set; }
+        public int countPages { get; set; }
+        public List<Models.Product> Products { get; set; }
+        public List<Models.ProductType> ProductTypes { get; set; }
+        public List<Models.InforImport> InforImports { get; set; }
+        public List<Models.Supplier> Suppliers { get; set; }
         public InventoryControlProductModel(MWMSystemContext dbContext)
         {
             this.dbContext = dbContext;
         }
-        public List<dynamic> GetAllProductOfInventoryControl()
-        {
-            var query = (from a in dbContext.InforImports
-                         join b in dbContext.Products on a.Idproduct equals b.Id
-                         group new { a, b } by new { a.Idproduct, b.Name, b.Producer,
-                             a.DateExpiry, a.DateImport,b.SalePrice,b.Status, a.ImportPrice,b.Unit,a.Discount, a.QuantityImport, b.QuantityInStock, a.Shelves} into g
-                         orderby g.Key.Idproduct
-                         select new
-                         {
-
-                             g.Key.Idproduct,
-                             g.Key.Name,
-                             g.Key.Producer,
-                             g.Key.DateExpiry,
-                             g.Key.DateImport,
-                             g.Key.SalePrice,
-                             g.Key.Unit,
-                             g.Key.ImportPrice,
-                             g.Key.QuantityImport,
-                             g.Key.QuantityInStock,
-                             g.Key.Status,
-                             g.Key.Shelves,
-                             g.Key.Discount
-                         });
-
-            List<dynamic> dynamicList = new List<dynamic>();
-            foreach (var obj in query)
-            {
-                dynamic dynamicObj = new System.Dynamic.ExpandoObject();
-
-                // Thêm từng thuộc tính vào đối tượng động
-                dynamicObj.Idproduct = obj.Idproduct;
-                dynamicObj.Name = obj.Name;
-                dynamicObj.Producer = obj.Producer;
-                dynamicObj.DateExpiry = obj.DateExpiry;
-                dynamicObj.DateImport = obj.DateImport;
-                dynamicObj.SalePrice = obj.SalePrice;
-                dynamicObj.Unit = obj.Unit;
-                dynamicObj.ImportPrice = obj.ImportPrice;
-                dynamicObj.QuantityImport = obj.QuantityImport;
-                dynamicObj.QuantityInStock = obj.QuantityInStock;
-                dynamicObj.Shelves = obj.Shelves;
-                dynamicObj.Status = obj.Status;
-                dynamicObj.Discount = obj.Discount;
-                dynamicList.Add(dynamicObj);
-            }
-            return dynamicList;
-        }
+        [BindProperty(SupportsGet = true)]
+        public string searchString { get; set; }
         public void OnGet()
         {
+            int totalInforImports = dbContext.InforImports.Count();
+            countPages = (int)Math.Ceiling((double)totalInforImports / ITEMS_PER_PAGE);
+
+            if (currentPage < 1)
+            {
+                currentPage = 1;
+            }
+            if (currentPage > countPages)
+            {
+                currentPage = countPages;
+            }
+
+            var pro = (from a in dbContext.InforImports
+                       orderby a.Idproduct ascending
+                       select a)
+                       .Skip((currentPage - 1) * 10)
+                       .Take(ITEMS_PER_PAGE);
+
+
+            InforImports = pro.ToList();
+            
 
         }
     }

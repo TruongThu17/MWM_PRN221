@@ -9,6 +9,12 @@ namespace ProjectFinal.Pages
         private readonly ILogger<IndexModel> _logger;
         public readonly MWMSystemContext dbContext;
 
+        public List<User> Users { get; set; }
+
+        public int countSupplier { get; set; }
+
+        public int countCustomer { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger, MWMSystemContext dbContext)
         {
             _logger = logger;
@@ -17,7 +23,9 @@ namespace ProjectFinal.Pages
 
         public void OnGet()
         {
-
+            countCustomer = dbContext.Customers.Count();
+            countSupplier = dbContext.Suppliers.Count();
+            Users = dbContext.Users.ToList();
         }
     }
 }

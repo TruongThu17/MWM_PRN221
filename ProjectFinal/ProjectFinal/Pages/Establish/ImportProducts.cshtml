@@ -1,0 +1,67 @@
+﻿@page
+@model ProjectFinal.Pages.Establish.ImportProductsModel
+@{
+    ViewData["Title"] = "Nhập";
+}
+
+
+<div class="row" style="height:100px;">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Nhập Hàng
+                </div>
+            </div>
+            <div class="mx-5">
+                <form method="post">
+                    <div class="form-group">
+                        <label asp-for="ImportProduct.UserName" class="control-label"></label>
+                        <input asp-for="ImportProduct.UserName" class="form-control" />
+                        <span asp-validation-for="ImportProduct.UserName" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label  class="control-label">Tên Người Nhập</label>
+                        <input value="Trương Thu" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ImportProduct.DateImport" class="control-label"></label>
+                        <input asp-for="ImportProduct.DateImport" class="form-control" />
+                        <span asp-validation-for="ImportProduct.DateImport" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImportProduct.TotalBill" class="control-label"></label>
+                        <input asp-for="ImportProduct.TotalBill" class="form-control" />
+                        <span asp-validation-for="ImportProduct.TotalBill" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="productype" >Nhà Phân Phối</label>
+                        <div class="col-md-8">
+                            <select class="form-control" id="productype" name="productype">
+                                <option value="0">Chọn Nhà Phân Phối</option>
+                                @foreach (var p in Model.dbContext.Suppliers)
+                                {
+                                    <option value="@p.Id">@p.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./InventoryControlProduct">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
