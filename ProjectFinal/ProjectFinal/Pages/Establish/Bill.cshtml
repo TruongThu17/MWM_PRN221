@@ -1,0 +1,120 @@
+﻿@page
+@model ProjectFinal.Pages.Establish.BillModel
+@{
+}
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="card flex-column ">
+                    <div class="mx-3 mt-3 form-group row">
+                        <input style="width: 350px;" type="text" class="form-control" value="" name="searchString" placeholder="Sản Phẩm...">
+                        <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
+                    </div>
+                    <div class="card-body mt-auto">
+                        <table class="table table-responsive-sm">
+                            <thead>
+                                <tr>
+                                    <th style="font-size:12px;">STT</th>
+                                    <th style="font-size:12px;">Mã Sản Phẩm</th>
+                                    <th style="font-size:12px;">Tên Sản Phẩm</th>
+                                    <th style="font-size:12px;">Giá</th>
+                                    <th style="font-size:12px;">Số Lượng</th>
+                                    <th style="font-size:12px;">Giảm Giá</th>
+                                    <th style="font-size:12px;">Thành Tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-lg-5 ">
+                <div class="card d-flex flex-column" style="height:550px;">
+                    <div class="mx-1 mt-3 mt-autoform-group row">
+                        <div class="col-md-6 text-left">
+                            <select class="form-control form-control-sm" id="select3" name="select3">
+                                <option value="thutt">Trương Thu</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 float-right text-right">
+                            <div id="current-time"></div>
+                        </div>
+                    </div>
+                    <div class="mx-3 mt-auto form-group row mt-3">
+
+                        <div class="col-md-10">
+                            <div class="row">
+                                <input style="width: 250px;" type="text" class="form-control" value="" name="searchString" placeholder="Khách Hàng...">
+                                <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label" for="nameProduct">Tổng Tiền</label>
+                        <div class="col-md-9">
+                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label" for="nameProduct">Giảm Giá</label>
+                        <div class="col-md-9">
+                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label " for="nameProduct">Thành Tiền: </label>
+                        <div class="col-md-9">
+                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label " for="nameProduct">Đặt Cọc: </label>
+                        <div class="col-md-9">
+                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label " for="nameProduct">Còn Nợ: </label>
+                        <div class="col-md-9">
+                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class=" mt-auto form-group d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary mx-3" style="height:50px; width:350px; font-size:20px;">
+                            Đặt Hàng
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+    </div>
+</div>
+
+<script>
+    setInterval(function() {
+        var currentTime = new Date();
+        var options = { timeZone: 'Asia/Ho_Chi_Minh', hour12: false };
+        var vnTime = currentTime.toLocaleString('en-US', options);
+        document.getElementById('current-time').innerHTML = vnTime;
+    }, 1000);
+</script>

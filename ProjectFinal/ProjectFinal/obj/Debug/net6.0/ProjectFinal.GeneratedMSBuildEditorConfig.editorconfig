@@ -47,8 +47,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/Bill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXEJpbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/ImportProducts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXEltcG9ydFByb2R1Y3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXE9yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Index.cshtml]
