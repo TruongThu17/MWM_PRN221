@@ -7,12 +7,26 @@
         <div class="row">
             <div class="col-lg-7">
                 <div class="card flex-column ">
-                    <div class="mx-3 mt-3 form-group row">
-                        <input style="width: 350px;" type="text" class="form-control" value="" name="searchString" placeholder="Sản Phẩm...">
-                        <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
+                    <div class="divider mx-3 mt-3 form-group row " style="order: 1;">
+                        <input style="width: 350px;" type="text" class="form-control" value="" id="searchString" placeholder="Sản Phẩm...">
+                        <button type="submit" class="btn btn-primary mx-3" onclick="searchProduct()">Tìm kiếm</button>
                     </div>
-                    <div class="card" style="position: absolute; top: 0; left: 0; z-index: 10;"></div>
-                    <div class="card-body mt-auto">
+                    <div class="card mx-3" id="mySearch" style="position: absolute; left: 0; z-index: 10;top:55px; display:none; order: 2; ">
+                        <table class="table table-responsive-sm" id="tableSearch">
+                            <thead>
+                                <tr>
+                                    <th style="font-size:12px;">Mã Sản Phẩm</th>
+                                    <th style="font-size:12px;">Tên Sản Phẩm</th>
+                                    <th style="font-size:12px;">Giá</th>
+                                    <th style="font-size:12px;">Tồn Kho</th>
+                                    <th style="font-size:12px;">Khách Hàng Đặt</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productSearch">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-body mt-auto" style="order: 2;">
                         <table class="table table-responsive-sm">
                             <thead>
                                 <tr>
@@ -53,7 +67,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -100,12 +114,113 @@
         </div>
     </div>
 </div>
-
+<!-- Add new customer -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Tạo Thông Tin Khách Hàng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input class="form-control mt-3" id="nameCustomer" type="text" placeholder="Tên Khách Hàng ">
+                <input class="form-control mt-3" id="emailCustomer" type="text" placeholder="Email">
+                <input class="form-control mt-3" id="phoneCustomer" type="text" placeholder="Số Điện Thoại">
+                <input class="form-control mt-3" id="addressCustomer" type="text" placeholder="Địa Chỉ">
+                <input class="form-control mt-3" id="descriptionCustomer" type="text" placeholder="Mô tả">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="createCustomer()">Tạo</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
+    // Lấy thẻ div chứa kết quả tìm kiếm
+    const searchResults = document.getElementById('mySearch');
+
+    // Lắng nghe sự kiện click của document
+    document.addEventListener('click', function(event) {
+        // Kiểm tra nếu người dùng click ra ngoài thẻ div chứa kết quả tìm kiếm
+        if (!searchResults.contains(event.target)) {
+            // Thiết lập thuộc tính display của thẻ div thành none để ẩn đi
+            searchResults.style.display = 'none';
+        }
+    });
     setInterval(function() {
         var currentTime = new Date();
         var options = { timeZone: 'Asia/Ho_Chi_Minh', hour12: false };
         var vnTime = currentTime.toLocaleString('en-US', options);
         document.getElementById('current-time').innerHTML = vnTime;
     }, 1000);
+    function searchProduct() {
+
+        var searchQuery = $('#searchString').val();
+        $.ajax({
+            url: 'http://localhost:5047/Establish/SearchProduct/?handler=Search',
+            type: 'get',
+            data: { query: searchQuery },
+            success: function(result) {
+                if (result) {
+                    // Xóa các sản phẩm hiện có trong table
+                    $('#productSearch').empty();
+                    // Thêm các sản phẩm tìm kiếm vào table
+                    $.each(result, function(index, product) {
+                        $('#productSearch').append('<tr><td>' + product.name + '</td><td>' + product.salePrice + '</td><td>' + product.quantityInStock + '</td></tr>');
+                    });
+                    document.querySelector("#mySearch").style.display = "block";
+                }
+
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+
+
+    }
+    function createCustomer() {
+        // Lấy dữ liệu từ các input fields trong form modal
+        var name = $('#nameCustomer').val();
+        var phone = $('#phoneCustomer').val();
+        var address = $('#addressCustomer').val();
+        var note = $('#descriptionCustomer').val();
+
+        // Gửi dữ liệu lên server bằng phương thức POST
+        $.ajax({
+            url: 'http://localhost:5047/Customer/Create/?handler=Create',
+            type: 'get',
+            data: {
+                Name: name,
+                Note: note,
+                Phone: phone,
+                Address: address
+            },
+            success: function(result) {
+                // Sau khi tạo thành công, ẩn modal
+                $('#createModal').modal('hide');
+
+                // Reload trang để cập nhật danh sách nhà phân phối
+                location.reload();
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+    }
+
+
+
+
 </script>

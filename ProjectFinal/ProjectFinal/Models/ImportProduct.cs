@@ -16,6 +16,7 @@ namespace ProjectFinal.Models
         public DateTime? DateImport { get; set; }
         public decimal? TotalBill { get; set; }
         public int? Supplier { get; set; }
+        public string? CodeImport { get; set; }
 
         public virtual Supplier? SupplierNavigation { get; set; }
         public virtual User UserNameNavigation { get; set; } = null!;

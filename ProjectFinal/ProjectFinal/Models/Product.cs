@@ -19,6 +19,7 @@ namespace ProjectFinal.Models
         public string? Unit { get; set; }
         public decimal? SalePrice { get; set; }
         public int? QuantityInStock { get; set; }
+        public int? QuantityOrder { get; set; }
 
         public virtual ProductType ProductTypeNavigation { get; set; } = null!;
         public virtual ICollection<InforImport> InforImports { get; set; }
