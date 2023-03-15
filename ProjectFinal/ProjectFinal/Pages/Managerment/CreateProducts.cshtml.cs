@@ -25,7 +25,7 @@ namespace ProjectFinal.Pages.Managerment
 
         public IActionResult OnGetCreate()
         {
-            var newProduct = new Product { Name = nameProduct,Producer = nameProducer, ProductType = productype, Status = status, Unit = unit, SalePrice = saleprice, QuantityInStock = quantityinstock  };
+            var newProduct = new Product { Name = nameProduct,Producer = nameProducer, ProductType = productype, Status = status, Unit = unit, SalePrice = saleprice, QuantityInStock = quantityinstock , QuantityOrder=0,QuantitySold=0, TotalSales=0 };
             dbContext.Products.Add(newProduct);
             dbContext.SaveChanges();
             return new JsonResult("success");

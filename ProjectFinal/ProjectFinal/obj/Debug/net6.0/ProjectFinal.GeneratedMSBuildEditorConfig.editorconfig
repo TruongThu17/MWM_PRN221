@@ -67,10 +67,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Login/login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5cbG9naW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/CreateProducts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcQ3JlYXRlUHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -105,6 +101,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXGxvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/_AsideMenu.cshtml]

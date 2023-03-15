@@ -4,7 +4,7 @@
     ViewData["Title"] = "Nhập";
 }
 
-@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <div class="row" style="height:100px;">
@@ -195,7 +195,7 @@
                 price: cells[2].innerText,
                 quantity: cells[3].innerText,
                 discount: cells[4].innerText,
-                total: cells[5].innerText,
+                total: cells[5].innerText
             };
             if (idProduct === product.id) {
                 return false;
@@ -287,4 +287,3 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     }
-*@

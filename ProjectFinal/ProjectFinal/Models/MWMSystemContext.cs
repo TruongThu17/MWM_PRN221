@@ -83,6 +83,12 @@ namespace ProjectFinal.Models
 
                 entity.Property(e => e.Address).HasMaxLength(300);
 
+                entity.Property(e => e.Dob).HasColumnType("date");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Name).HasMaxLength(250);
 
                 entity.Property(e => e.Note).HasMaxLength(300);
@@ -173,6 +179,8 @@ namespace ProjectFinal.Models
                 entity.Property(e => e.Producer).HasMaxLength(250);
 
                 entity.Property(e => e.SalePrice).HasColumnType("money");
+
+                entity.Property(e => e.TotalSales).HasColumnType("money");
 
                 entity.Property(e => e.Unit).HasMaxLength(250);
 

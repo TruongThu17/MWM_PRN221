@@ -17,9 +17,11 @@ namespace ProjectFinal.Pages.Customer
         [BindProperty(SupportsGet = true)] public string phone { get; set; }
         [BindProperty(SupportsGet = true)] public string address { get; set; }
         [BindProperty(SupportsGet = true)] public string note { get; set; }
+        [BindProperty(SupportsGet = true)] public string email { get; set; }
+        [BindProperty(SupportsGet = true)] public DateTime dob { get; set; }
         public IActionResult OnGetCreate()
         {
-            var newCustomer = new Models.Customer { Name = name, Phone = phone, Address = address, Note = note };
+            var newCustomer = new Models.Customer { Name = name, Phone = phone, Address = address, Note = note, Dob = dob, Email=email };
             dbContext.Customers.Add(newCustomer);
             dbContext.SaveChanges();
             return new JsonResult("success");

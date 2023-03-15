@@ -11,7 +11,7 @@
                         <input style="width: 350px;" type="text" class="form-control" value="" id="searchString" placeholder="Sản Phẩm...">
                         <button type="submit" class="btn btn-primary mx-3" onclick="searchProduct()">Tìm kiếm</button>
                     </div>
-                    <div class="card mx-3" id="mySearch" style="position: absolute; left: 0; z-index: 10;top:55px; display:none; order: 2; ">
+                    <div class="card mx-3" id="mySearch" style="position: absolute; left: 0; z-index: 10;top:55px; display:none; order: 2; overflow: auto; max-height: 500px;">
                         <table class="table table-responsive-sm" id="tableSearch">
                             <thead>
                                 <tr>
@@ -26,7 +26,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-body mt-auto" style="order: 2;">
+                    <div class="card-body mt-auto" style="order: 2; overflow: auto; max-height: 485px;">
                         <table class="table table-responsive-sm">
                             <thead>
                                 <tr>
@@ -35,7 +35,6 @@
                                     <th style="font-size:12px;">Tên Sản Phẩm</th>
                                     <th style="font-size:12px;">Giá</th>
                                     <th style="font-size:12px;">Số Lượng</th>
-                                    <th style="font-size:12px;">Giảm Giá</th>
                                     <th style="font-size:12px;">Thành Tiền</th>
                                 </tr>
                             </thead>
@@ -62,7 +61,7 @@
 
                         <div class="col-md-10">
                             <div class="row">
-                                <input style="width: 250px;" type="text" class="form-control" value="" name="searchString" placeholder="Khách Hàng...">
+                                <input style="width: 250px;" type="text" class="form-control " value="" name="searchString" placeholder="Khách Hàng...">
                                 <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
                             </div>
                         </div>
@@ -74,37 +73,42 @@
 
                     </div>
                     <div class="mx-3  mt-auto form-group row">
-                        <label class="col-md-3 col-form-label" for="nameProduct">Tổng Tiền</label>
-                        <div class="col-md-9">
-                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        <label class="col-md-3 col-form-label" for="totalBill" style="font-weight: bold;">Tổng Tiền</label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="totalBill">0</span>
                         </div>
+                        <div class="col-md-2 mt-1">VND</div>
+                    </div> 
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label" for="discount" style="font-weight: bold;">Giảm Giá</label>
+                        <div class="col-md-7">
+                            <input class="form-control" id="discount" name="discount" type="number" min="0" value="0" onclick="updateMoney()">
+                        </div>
+                        <div class="col-md-2 mt-1">%</div>
                     </div>
                     <div class="mx-3  mt-auto form-group row">
-                        <label class="col-md-3 col-form-label" for="nameProduct">Giảm Giá</label>
-                        <div class="col-md-9">
-                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        <label class="col-md-3 col-form-label " for="money" style="font-weight: bold;">Thành Tiền: </label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="money">0</span>
                         </div>
+                        <div class="col-md-2">VND</div>
                     </div>
                     <div class="mx-3  mt-auto form-group row">
-                        <label class="col-md-3 col-form-label " for="nameProduct">Thành Tiền: </label>
-                        <div class="col-md-9">
-                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        <label class="col-md-3 col-form-label " for="deposit" style="font-weight: bold;">Đặt Cọc: </label>
+                        <div class="col-md-7">
+                            <input class="form-control" id="deposit" name="deposit" type="number" min="0" value="0" onclick="updateMoney()">
                         </div>
+                        <div class="col-md-2 mt-1">VND</div>
                     </div>
                     <div class="mx-3  mt-auto form-group row">
-                        <label class="col-md-3 col-form-label " for="nameProduct">Đặt Cọc: </label>
-                        <div class="col-md-9">
-                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
+                        <label class="col-md-3 col-form-label " for="debt" style="font-weight: bold;">Còn Nợ: </label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="debt">0</span>
                         </div>
-                    </div>
-                    <div class="mx-3  mt-auto form-group row">
-                        <label class="col-md-3 col-form-label " for="nameProduct">Còn Nợ: </label>
-                        <div class="col-md-9">
-                            <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="number" min="0" value="0">
-                        </div>
+                        <div class="col-md-2 mt-1">VND</div>
                     </div>
                     <div class=" mt-auto form-group d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary mx-3" style="height:50px; width:350px; font-size:20px;">
+                        <button type="button" class="btn btn-primary mx-3" style="height:50px; width:350px; font-size:20px; font-weight: bold;">
                             Đặt Hàng
                         </button>
                     </div>
@@ -141,7 +145,6 @@
 <script>
     // Lấy thẻ div chứa kết quả tìm kiếm
     const searchResults = document.getElementById('mySearch');
-
     // Lắng nghe sự kiện click của document
     document.addEventListener('click', function(event) {
         // Kiểm tra nếu người dùng click ra ngoài thẻ div chứa kết quả tìm kiếm
@@ -156,36 +159,6 @@
         var vnTime = currentTime.toLocaleString('en-US', options);
         document.getElementById('current-time').innerHTML = vnTime;
     }, 1000);
-    function searchProduct() {
-
-        var searchQuery = $('#searchString').val();
-        $.ajax({
-            url: 'http://localhost:5047/Establish/SearchProduct/?handler=Search',
-            type: 'get',
-            data: { query: searchQuery },
-            success: function(result) {
-                if (result) {
-                    // Xóa các sản phẩm hiện có trong table
-                    $('#productSearch').empty();
-                    // Thêm các sản phẩm tìm kiếm vào table
-                    $.each(result, function(index, product) {
-                        $('#productSearch').append('<tr><td>' + product.name + '</td><td>' + product.salePrice + '</td><td>' + product.quantityInStock + '</td></tr>');
-                    });
-                    document.querySelector("#mySearch").style.display = "block";
-                }
-
-            },
-            error: function() {
-                // Xử lý lỗi tại đây
-                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
-            },
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-            }
-        });
-
-
-    }
     function createCustomer() {
         // Lấy dữ liệu từ các input fields trong form modal
         var name = $('#nameCustomer').val();
@@ -219,8 +192,166 @@
             }
         });
     }
+    function searchProduct() {
 
+        var searchQuery = $('#searchString').val();
+        $.ajax({
+            url: 'http://localhost:5047/Establish/SearchProduct/?handler=Search',
+            type: 'get',
+            data: { query: searchQuery },
+            success: function(result) {
+                if (result) {
+                    // Xóa các sản phẩm hiện có trong table
+                    $('#productSearch').empty();
+                    // Thêm các sản phẩm tìm kiếm vào table
+                    $.each(result, function(index, product) {
+                        var newRow = "<tr onclick='addProductList(" + product.id + ")'><td id='Addproduct-" + product.id + "'>" + product.id +
+                            "</td><td id='Addname-" + product.id + "'>" + product.name +
+                            "</td><td id='Addprice-" + product.id + "'>" + product.salePrice +
+                            "</td><td id='AddQInStock-" + product.id + "'>" + product.quantityInStock +
+                            "</td><td id='AddQOrder-" + product.id + "'>" + product.quantityOrder + "</td></tr>";
+                        $('#productSearch').append(newRow);
+                    });
+                    document.querySelector("#mySearch").style.display = "block";
+                }
 
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+    }
+    function checkRow(idProduct) {
+        var products = [];
+        var tableBody = document.getElementById("productTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].querySelectorAll("td");
+            var product = {
+                stt: cells[0].innerText,
+                id: cells[1].innerText,
+                name: cells[2].innerText,
+                price: cells[3].innerText,
+                quantity: cells[4].innerText,
+                total: cells[5].innerText
+            };
+            if (idProduct === product.id) {
+                return false;
+            }
+            products.push(product);
+        }
+        
+        return true;
+    }
 
+    function addProductList(id) {
+        var idP = document.getElementById('Addproduct-' + id).innerText;
+        var nameP = document.getElementById('Addname-' + id).innerText;
+        var priceP = document.getElementById('Addprice-' + id).innerText;
+        var QInStockP = document.getElementById('AddQInStock-' + id).innerText;
+        var QOrderP = document.getElementById('AddQOrder-' + id).innerText;
+
+        var tableBody = document.getElementById("productTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        // xóa product trong search và đóng các product
+        $('#productSearch').empty();
+        document.querySelector("#mySearch").style.display = "none";
+
+        if(checkRow(idP)){
+            var newRow ="<tr><td id='stt-" + idP + "'>" + rows.length +
+                        "</td><td id='product-" + idP + "'>" + idP +
+                        "</td><td id='name-" + idP + "'>" + nameP +
+                        "</td><td id='price-" + idP + "'>" + priceP +
+                        "</td><td id='quantity-" + idP + "'>" + 0 +
+                        "</td><td id='total-" + idP + "'>" + 0 + "</td></tr>";
+            $('#productTableBody').append(newRow);
+        }
+        else{
+            updateProduct(idP);
+            
+        }
+        updateTotalBill();
+        updateMoney();
+        updateDebt();
+        
+    }
+
+    function updateProduct(id) {
+        var quantityP = document.getElementById('quantity-' + id);
+        var oldQuantity = quantityP.innerText;
+        var newQuantity = parseInt(oldQuantity) + 1;
+        quantityP.textContent = newQuantity;
+
+        //update total
+        var idtotal = document.getElementById('total-' + id);
+        var idprice = document.getElementById('price-' + id);
+
+        var oldTotal = idtotal.innerText;
+        var oldPrice = idprice.innerText;
+
+        var total = parseInt(newQuantity) * parseInt(oldPrice);
+        idtotal.textContent = total;
+    }
+    function updateTotalBill(){
+        var totalBill = $('#totalBill').innerText;
+        //danh sách product
+        var products = [];
+        var tableBody = document.getElementById("productTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        var t=0;
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].querySelectorAll("td");
+            var product = {
+                stt: cells[0].innerText,
+                id: cells[1].innerText,
+                name: cells[2].innerText,
+                price: cells[3].innerText,
+                quantity: cells[4].innerText,
+                total: cells[5].innerText
+            };
+            t += parseInt(product.total);
+            console.log(t);
+            products.push(product);
+        }
+        document.getElementById("totalBill").textContent = t;
+        console.log(products);
+    }
+    function updateMoney(){
+        //update mục thành tiền
+        var totalBill = document.getElementById("totalBill").innerText;
+        var discount = $('#discount').val();
+        var money = document.getElementById("money").innerText;
+        var t = 0;
+        document.getElementById("money").textContent = parseInt(totalBill) - ((parseInt(totalBill) * parseInt(discount))/100);
+        
+
+        
+
+    }
+    function updateDebt(){
+        // update mục nhập cọc bao nhiêu và phần nợ lại
+        var money = document.getElementById("money").innerText;
+        var deposit = $('#deposit').val();
+        var debt = document.getElementById("debt").innerText;
+        document.getElementById("debt").textContent = parseInt(money) - parseInt(deposit);
+    }
+
+    var input = document.getElementById("discount");
+
+    input.addEventListener("input", function(event) {
+        updateMoney();
+        updateDebt();
+    });
+
+    var deposit = document.getElementById("deposit");
+
+    deposit.addEventListener("input", function(event) {
+        updateMoney();
+        updateDebt();
+    });
 
 </script>

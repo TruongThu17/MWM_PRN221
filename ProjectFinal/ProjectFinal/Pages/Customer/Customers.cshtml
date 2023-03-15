@@ -1,80 +1,85 @@
 ﻿@page
 @model ProjectFinal.Pages.Customer.CustomersModel
 @{
-        var pageingmodel = new Helper.PagingModel()
+    var pageingmodel = new Helper.PagingModel()
             {
                 currentpage = Model.currentPage,
                 countpages = Model.countPages,
-                generateUrl = (int? p) => @Url.Page("/Customer/Customers", new { p = p})
+                generateUrl = (int? p) => @Url.Page("/Customer/Customers", new { p = p })
             };
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div>
-                            <i class="fa fa-align-justify"></i> Danh Sách Khách Hàng
-                        </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Danh Sách Khách Hàng
+                </div>
+                <div class="row">
+                    <form method="get">
                         <div class="row">
-                            <form method="get">
-                                <div class="row">
-                                    <input style="width: 200px;" type="text" class="form-control" value="@Model.searchString" name="searchString" placeholder="Nhập tên khách hàng...">       
-                                    <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
-                                </div>
-                            </form>
-                            <button type="button" class="btn btn-primary mx-3" data-toggle="modal" data-target="#createModal">
-                                    Thêm Mới
-                            </button>
+                            <input style="width: 200px;" type="text" class="form-control" value="@Model.searchString" name="searchString" placeholder="Nhập tên khách hàng...">
+                            <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
                         </div>
-                    </div>
-                    
-                    <div class="card-body">
-                        <table class="table table-responsive-sm table-bordered table-striped table-sm">
-                            <thead>
-                                 <tr>
-                                    <th>ID</th>
-                                    <th>Tên Khách Hàng</th>
-                                    <th>Số Điện Thoại</th>
-                                    <th>Địa Chỉ</th>
-                                    <th>Ghi Chú</th>
-                                    <th>Hành Động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    </form>
+                    <button type="button" class="btn btn-primary mx-3" data-toggle="modal" data-target="#createModal">
+                        Thêm Mới
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Số Điện Thoại</th>
+                            <th>Email</th>
+                            <th>Địa Chỉ</th>
+                            <th>Ngày Sinh</th>
+                            <th>Ghi Chú</th>
+                            <th>Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         @if (Model.Customers != null)
                         {
-                           @foreach (var c in Model.Customers)
+                            @foreach (var c in Model.Customers)
                             {
                                 <tr>
                                     <td>@c.Id</td>
                                     <td>@c.Name</td>
                                     <td>@c.Phone</td>
+                                    <td>@c.Email</td>
                                     <td>@c.Address</td>
+                                    <td>@c.Dob</td>
                                     <td>@c.Note</td>
                                     <td style="width: 150px">
                                         <div class="d-flex justify-content-around">
-                                            <a style="width:50px; height: 30px" class="btn btn-success mx-2 my-2" asp-page ="./Detail"  asp-route-id="@c.Id">Xem</a>
+                                            <a style="width:50px; height: 30px" class="btn btn-success mx-2 my-2" asp-page="./Detail" asp-route-id="@c.Id">Xem</a>
                                             <a style="width:50px; height: 30px" class="btn btn-warning mx-2 my-2" asp-page="./Edit" asp-route-id="@c.Id">Sửa</a>
                                         </div>
                                     </td>
                                 </tr>
-                            }  
+                            }
                         }
-                        else{
+                        else
+                        {
 
                             <p>Không có khách hàng nào được tìm thấy</p>
                         }
-                            </tbody>
-                        </table>
-                         <partial name="_Page" model="@pageingmodel"/>
-                    </div>
-                </div>
+                    </tbody>
+                </table>
+                <partial name="_Page" model="@pageingmodel" />
             </div>
-            <!-- /.col-->
         </div>
-        <!-- Add new customer -->
+    </div>
+    <!-- /.col-->
+</div>
+<!-- Add new customer -->
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -85,11 +90,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input class="form-control mt-3" id="nameCustomer"  type="text" placeholder="Tên Khách Hàng ">
-                <input class="form-control mt-3" id="emailCustomer" type="text" placeholder="Email">
-                <input class="form-control mt-3" id="phoneCustomer" type="text" placeholder="Số Điện Thoại">
-                <input class="form-control mt-3" id="addressCustomer" type="text" placeholder="Địa Chỉ">
-                <input class="form-control mt-3" id="descriptionCustomer" type="text" placeholder="Mô tả">
+                <input class="form-control mt-3" id="nameCustomer" type="text" placeholder="Tên Khách Hàng...">
+                <input class="form-control mt-3" id="phoneCustomer" type="text" placeholder="Số Điện Thoại...">
+                <input class="form-control mt-3" id="emailCustomer" type="email" placeholder="Email...">
+                <input class="form-control mt-3" id="addressCustomer" type="text" placeholder="Địa Chỉ...">
+                <input class="form-control mt-3" id="dobCustomer" type="date" placeholder="Ngày Sinh...">
+                <input class="form-control mt-3" id="descriptionCustomer" type="text" placeholder="Ghi Chú...">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
@@ -103,9 +109,10 @@
         // Lấy dữ liệu từ các input fields trong form modal
         var name = $('#nameCustomer').val();
         var phone = $('#phoneCustomer').val();
+        var email = $('#emailCustomer').val();
+        var dob = $('#dobCustomer').val();
         var address = $('#addressCustomer').val();
         var note = $('#descriptionCustomer').val();
-
         // Gửi dữ liệu lên server bằng phương thức POST
         $.ajax({
             url: 'http://localhost:5047/Customer/Create/?handler=Create',
@@ -114,7 +121,9 @@
                 Name: name,
                 Note: note,
                 Phone: phone,
-                Address: address
+                Address: address,
+                Email: email,
+                Dob: dob
             },
             success: function(result) {
                 // Sau khi tạo thành công, ẩn modal
