@@ -2,6 +2,14 @@
 @model ProjectFinal.Pages.Establish.OrderModel
 @{
 }
+<style>
+   tr:hover td {
+      background-color: skyblue;
+   }
+   .hover {
+      background-color: skyblue;
+   }
+</style>
 <div class="container-fluid">
     <div class="animated fadeIn">
         <div class="row">
@@ -61,9 +69,21 @@
 
                         <div class="col-md-10">
                             <div class="row">
-                                <input style="width: 250px;" type="text" class="form-control " value="" name="searchString" placeholder="Khách Hàng...">
-                                <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
+                                <input style="width: 250px;" type="text" class="form-control " id="searchCus" placeholder="Khách Hàng...">
+                                <button type="submit" class="btn btn-primary mx-3" onclick="Customer()">Tìm kiếm</button>
                             </div>
+                        </div>
+                        <div class="card md-10 mt-5 mx-3" id="idSearchCustomer" style="position: absolute;  left: 0; z-index: 10;top:55px;display:none; overflow: auto; max-height: 400px;">
+                            <table class="table table-responsive-sm" id="tableSearchCustomer">
+                                <thead>
+                                    <tr>
+                                        <th style="font-size:14px;">ID</th>
+                                        <th style="font-size:14px;">Tên Khách Hàng</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="customerSearch">
+                                </tbody>
+                            </table>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
@@ -73,12 +93,19 @@
 
                     </div>
                     <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label" for="customerName" style="font-weight: bold;">Khách Hàng</label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="nameCustomer"></span>
+                        </div>
+                        <span class="form-control" style="display:none;" id="customerId"></span>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
                         <label class="col-md-3 col-form-label" for="totalBill" style="font-weight: bold;">Tổng Tiền</label>
                         <div class="col-md-7">
                             <span class="form-control" id="totalBill">0</span>
                         </div>
                         <div class="col-md-2 mt-1">VND</div>
-                    </div> 
+                    </div>
                     <div class="mx-3  mt-auto form-group row">
                         <label class="col-md-3 col-form-label" for="discount" style="font-weight: bold;">Giảm Giá</label>
                         <div class="col-md-7">
@@ -129,11 +156,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input class="form-control mt-3" id="nameCustomer" type="text" placeholder="Tên Khách Hàng ">
-                <input class="form-control mt-3" id="emailCustomer" type="text" placeholder="Email">
-                <input class="form-control mt-3" id="phoneCustomer" type="text" placeholder="Số Điện Thoại">
-                <input class="form-control mt-3" id="addressCustomer" type="text" placeholder="Địa Chỉ">
-                <input class="form-control mt-3" id="descriptionCustomer" type="text" placeholder="Mô tả">
+                <input class="form-control mt-3" id="nameCustomer" type="text" placeholder="Tên Khách Hàng...">
+                <input class="form-control mt-3" id="phoneCustomer" type="text" placeholder="Số Điện Thoại...">
+                <input class="form-control mt-3" id="emailCustomer" type="email" placeholder="Email...">
+                <input class="form-control mt-3" id="addressCustomer" type="text" placeholder="Địa Chỉ...">
+                <input class="form-control mt-3" id="dobCustomer" type="date" placeholder="Ngày Sinh...">
+                <input class="form-control mt-3" id="descriptionCustomer" type="text" placeholder="Ghi Chú...">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
@@ -143,6 +171,13 @@
     </div>
 </div>
 <script>
+    $(document).ready(function() {
+      $('tr').hover(function() {
+         $(this).addClass('hover');
+      }, function() {
+         $(this).removeClass('hover');
+      });
+   });
     // Lấy thẻ div chứa kết quả tìm kiếm
     const searchResults = document.getElementById('mySearch');
     // Lắng nghe sự kiện click của document
@@ -151,6 +186,17 @@
         if (!searchResults.contains(event.target)) {
             // Thiết lập thuộc tính display của thẻ div thành none để ẩn đi
             searchResults.style.display = 'none';
+        }
+    });
+
+    // Lấy thẻ div chứa kết quả tìm kiếm
+    const searchC = document.getElementById('idSearchCustomer');
+    // Lắng nghe sự kiện click của document
+    document.addEventListener('click', function(event) {
+        // Kiểm tra nếu người dùng click ra ngoài thẻ div chứa kết quả tìm kiếm
+        if (!searchC.contains(event.target)) {
+            // Thiết lập thuộc tính display của thẻ div thành none để ẩn đi
+            searchC.style.display = 'none';
         }
     });
     setInterval(function() {
@@ -163,9 +209,10 @@
         // Lấy dữ liệu từ các input fields trong form modal
         var name = $('#nameCustomer').val();
         var phone = $('#phoneCustomer').val();
+        var email = $('#emailCustomer').val();
+        var dob = $('#dobCustomer').val();
         var address = $('#addressCustomer').val();
         var note = $('#descriptionCustomer').val();
-
         // Gửi dữ liệu lên server bằng phương thức POST
         $.ajax({
             url: 'http://localhost:5047/Customer/Create/?handler=Create',
@@ -174,7 +221,9 @@
                 Name: name,
                 Note: note,
                 Phone: phone,
-                Address: address
+                Address: address,
+                Email: email,
+                Dob: dob
             },
             success: function(result) {
                 // Sau khi tạo thành công, ẩn modal
@@ -193,7 +242,6 @@
         });
     }
     function searchProduct() {
-
         var searchQuery = $('#searchString').val();
         $.ajax({
             url: 'http://localhost:5047/Establish/SearchProduct/?handler=Search',
@@ -225,26 +273,54 @@
             }
         });
     }
+    function Customer() {
+        var searchQuery = $('#searchCus').val();
+        $.ajax({
+            url: 'http://localhost:5047/Establish/SearchCustomer/?handler=Search',
+            type: 'get',
+            data: { query: searchQuery },
+            success: function(result) {
+                if (result) {
+                    // Xóa các sản phẩm hiện có trong table
+                    $('#customerSearch').empty();
+                    // Thêm các sản phẩm tìm kiếm vào table
+                    $.each(result, function(index, customer) {
+                        var newRow = "<tr onclick='addCus(" + customer.id + ")'><td id='CusId-" + customer.id + "'>" + customer.id +
+                            "</td><td id='cusName-" + customer.id + "'>" + customer.name +"</td></tr>";
+                        $('#customerSearch').append(newRow);
+                    });
+                    document.querySelector("#idSearchCustomer").style.display = "block";
+                }
+
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+    }
+    function addCus(id){
+        var idC = document.getElementById("customerId");
+        var nameC = document.getElementById("nameCustomer");
+
+        var nameCustomer = document.getElementById("cusName-"+id);
+         nameC.textContent = nameCustomer.innerText;
+         idC.textContent = id;
+         document.querySelector("#idSearchCustomer").style.display = "none";
+    }
     function checkRow(idProduct) {
-        var products = [];
         var tableBody = document.getElementById("productTableBody");
         var rows = tableBody.querySelectorAll("tr");
         for (var i = 0; i < rows.length; i++) {
             var cells = rows[i].querySelectorAll("td");
-            var product = {
-                stt: cells[0].innerText,
-                id: cells[1].innerText,
-                name: cells[2].innerText,
-                price: cells[3].innerText,
-                quantity: cells[4].innerText,
-                total: cells[5].innerText
-            };
-            if (idProduct === product.id) {
+            if (idProduct === cells[1].innerText) {
                 return false;
             }
-            products.push(product);
         }
-        
+
         return true;
     }
 
@@ -261,31 +337,42 @@
         $('#productSearch').empty();
         document.querySelector("#mySearch").style.display = "none";
 
-        if(checkRow(idP)){
-            var newRow ="<tr><td id='stt-" + idP + "'>" + rows.length +
-                        "</td><td id='product-" + idP + "'>" + idP +
-                        "</td><td id='name-" + idP + "'>" + nameP +
-                        "</td><td id='price-" + idP + "'>" + priceP +
-                        "</td><td id='quantity-" + idP + "'>" + 0 +
-                        "</td><td id='total-" + idP + "'>" + 0 + "</td></tr>";
+        if (checkRow(idP)) {
+            var newRow = "<tr><td id='stt-" + idP + "'>" + rows.length +
+                "</td><td id='product-" + idP + "'>" + idP +
+                "</td><td id='name-" + idP + "'>" + nameP +
+                "</td><td id='price-" + idP + "'>" + priceP +
+                "</td><td> <input class='form-control' id='quantity-" + idP + "' name='quantityPL' type='number' style= 'width: 75px;' min='0' value='1'>"+
+                "</td><td id='total-" + idP + "'>" + 0 + "</td></tr>";
             $('#productTableBody').append(newRow);
+            updateT(idP);
         }
-        else{
+        else {
             updateProduct(idP);
-            
         }
         updateTotalBill();
         updateMoney();
         updateDebt();
-        
+
     }
+    
+    function updateT(id) {
+        var input = document.getElementById('quantity-' + id);
+        //update total
+        var idtotal = document.getElementById('total-' + id);
+        var idprice = document.getElementById('price-' + id);
+        var oldPrice = idprice.innerText;
 
+        var total = parseInt(input.value) * parseInt(oldPrice);
+        idtotal.textContent = total;
+    }
     function updateProduct(id) {
-        var quantityP = document.getElementById('quantity-' + id);
-        var oldQuantity = quantityP.innerText;
-        var newQuantity = parseInt(oldQuantity) + 1;
-        quantityP.textContent = newQuantity;
 
+        var quantityP = $('#quantity-' + id);
+        var oldQuantity = quantityP.val();
+        var newQuantity = parseInt(oldQuantity) + 1;
+        var input = document.getElementById('quantity-' + id);
+        input.value = newQuantity;
         //update total
         var idtotal = document.getElementById('total-' + id);
         var idprice = document.getElementById('price-' + id);
@@ -296,13 +383,13 @@
         var total = parseInt(newQuantity) * parseInt(oldPrice);
         idtotal.textContent = total;
     }
-    function updateTotalBill(){
+    function updateTotalBill() {
         var totalBill = $('#totalBill').innerText;
         //danh sách product
         var products = [];
         var tableBody = document.getElementById("productTableBody");
         var rows = tableBody.querySelectorAll("tr");
-        var t=0;
+        var t = 0;
         for (var i = 0; i < rows.length; i++) {
             var cells = rows[i].querySelectorAll("td");
             var product = {
@@ -310,7 +397,7 @@
                 id: cells[1].innerText,
                 name: cells[2].innerText,
                 price: cells[3].innerText,
-                quantity: cells[4].innerText,
+                quantity: $('#quantity-'+ cells[1].innerText).val(),
                 total: cells[5].innerText
             };
             t += parseInt(product.total);
@@ -318,21 +405,17 @@
             products.push(product);
         }
         document.getElementById("totalBill").textContent = t;
-        console.log(products);
     }
-    function updateMoney(){
+    function updateMoney() {
         //update mục thành tiền
         var totalBill = document.getElementById("totalBill").innerText;
         var discount = $('#discount').val();
         var money = document.getElementById("money").innerText;
         var t = 0;
-        document.getElementById("money").textContent = parseInt(totalBill) - ((parseInt(totalBill) * parseInt(discount))/100);
-        
-
-        
+        document.getElementById("money").textContent = parseInt(totalBill) - ((parseInt(totalBill) * parseInt(discount)) / 100);
 
     }
-    function updateDebt(){
+    function updateDebt() {
         // update mục nhập cọc bao nhiêu và phần nợ lại
         var money = document.getElementById("money").innerText;
         var deposit = $('#deposit').val();
