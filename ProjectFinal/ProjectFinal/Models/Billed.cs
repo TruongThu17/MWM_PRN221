@@ -19,6 +19,7 @@ namespace ProjectFinal.Models
         public decimal? Debt { get; set; }
         public decimal? Deposit { get; set; }
         public bool? Status { get; set; }
+        public double? Discount { get; set; }
 
         public virtual Customer IdcustomerNavigation { get; set; } = null!;
         public virtual User UsernameNavigation { get; set; } = null!;

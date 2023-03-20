@@ -13,7 +13,7 @@ namespace ProjectFinal.Models
         public int Idbill { get; set; }
         public int Idproduct { get; set; }
         public int Quatity { get; set; }
-        public double Discount { get; set; }
+        public decimal? Price { get; set; }
 
         public virtual Billed IdbillNavigation { get; set; } = null!;
         public virtual Product IdproductNavigation { get; set; } = null!;

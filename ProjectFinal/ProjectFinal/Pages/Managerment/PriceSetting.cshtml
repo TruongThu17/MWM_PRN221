@@ -59,7 +59,7 @@
                                         <td>@p.Id</td>
                                         <td>@p.Name</td>
                                         <td>
-                                            <input class="form-control" value="@p.SalePrice" type="text">
+                                            <input class="form-control" id='quantityP-@p.Id' onclick='updateT(@p.Id)' value="@p.SalePrice" type="text">
                                         </td>
                                         <td>@p.Unit</td>
                                         <td>
@@ -67,7 +67,7 @@
                                         </td>
                                         <td style="width: 150px">
                                             <div class="d-flex justify-content-around">
-                                                <a style="width:50px; height: 30px" class="btn btn-success mx-2 my-2" asp-page ="./DetailProducts"  asp-route-id="@p.Id">Xem</a>
+                                                <a style="width:50px; height: 30px" class="btn btn-success mx-2 my-2" asp-page="./DetailProducts" asp-route-id="@p.Id">Xem</a>
                                                 <a style="width:50px; height: 30px" class="btn btn-warning mx-2 my-2" asp-page="./UpdateProducts" asp-route-id="@p.Id">Sửa</a>
                                             </div>
                                         </td>
@@ -89,4 +89,6 @@
     </div>
     <!-- /.col-->
 </div>
-
+<script>
+function updateT(id) { }
+</script>

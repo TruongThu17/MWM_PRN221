@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using ProjectFinal.Models;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +54,12 @@ builder.Services.AddSwaggerDocument(config => {
             In = OpenApiSecurityApiKeyLocation.Header
         }));
 });
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+    });
 
 var app = builder.Build();
 
@@ -68,4 +75,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.UseCors(policy =>
+    policy.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+
 app.Run();
