@@ -6,90 +6,55 @@ namespace ProjectFinal.Pages.Transaction
 {
     public class ImportsModel : PageModel
     {
-        public Models.ImportProduct importProduct { get; set; }
         public readonly MWMSystemContext dbContext;
+        public const int ITEMS_PER_PAGE = 10;
+        [BindProperty(SupportsGet = true, Name = "p")]
+        public int currentPage { get; set; }
+        public int countPages { get; set; }
+        public List<Models.ImportProduct> ImportProducts { get; set; }
+        public List<Models.Supplier> Suppliers { get; set; }
+        public List<Models.User> Users { get; set; }
 
         public ImportsModel(MWMSystemContext dbContext)
         {
             this.dbContext = dbContext;
         }
-        //public List<dynamic> GetAllProductOfSettingPrice()
-        //{
-        //    var query = (from a in dbContext.Users
-        //                 join b in dbContext.ImportProducts on a.Username equals b.UserName
-        //                 join c in dbContext.InforImports on b.Id equals c.Idimport
-        //                 group new { a, b, c} by new { a.Name, a.Username, b.Id, c.DateImport  } into g
-        //                 orderby g.Key.Id
-        //                 select new
-        //                 {
-
-        //                     g.Key.Id,
-        //                     g.Key.Name,
-        //                     g.Key.Producer,
-        //                     g.Key.Status,
-        //                     g.Key.Unit,
-        //                     g.Key.SalePrice
-        //                 });
-
-        //    List<dynamic> dynamicList = new List<dynamic>();
-        //    foreach (var obj in query)
-        //    {
-        //        dynamic dynamicObj = new System.Dynamic.ExpandoObject();
-
-        //        // Thêm từng thuộc tính vào đối tượng động
-        //        dynamicObj.Id = obj.Id;
-        //        dynamicObj.Name = obj.Name;
-        //        dynamicObj.Producer = obj.Producer;
-        //        dynamicObj.Status = obj.Status;
-        //        dynamicObj.Unit = obj.Unit;
-        //        dynamicObj.SalePrice = obj.SalePrice;
-
-        //        dynamicList.Add(dynamicObj);
-        //    }
-        //    return dynamicList;
-        //}
+        [BindProperty(SupportsGet = true)]
+        public string searchString { get; set; }
         public void OnGet()
         {
-            // Thực hiện các hoạt động khi người dùng truy cập trang Razor Pages
+            int totalImportProducts = (from a in dbContext.ImportProducts
+                                select a).Count();
+            countPages = (int)Math.Ceiling((double)totalImportProducts / ITEMS_PER_PAGE);
+            if (currentPage < 1)
+            {
+                currentPage = 1;
+            }
+            if (currentPage > countPages)
+            {
+                currentPage = countPages;
+            }
+            Console.WriteLine(totalImportProducts);
+
+            var b = (from a in dbContext.ImportProducts
+                     orderby a.Id ascending
+                     select a)
+                       .Skip((currentPage - 1) * 10)
+                       .Take(ITEMS_PER_PAGE);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                ImportProducts = b.Where(a => a.SupplierNavigation.Name.Contains(searchString)).ToList();
+            }
+            else
+            {
+                ImportProducts = b.ToList();
+            }
+            Suppliers = dbContext.Suppliers.ToList();
+            Users = dbContext.Users.ToList();
+
         }
-
-        public void OnPost()
-        {
-            // Thực hiện các hoạt động khi người dùng thực hiện POST request tới trang Razor Pages
-        }
-        //public List<dynamic> GetAllProductOfSettingPrice()
-        //{
-        //    var query = (from a in dbContext.Products
-        //                 join b in dbContext.InformationProducts on a.Id equals b.ProductId
-        //                 group new { a, b } by new { a.Id, a.Name, a.Producer, a.Status, a.Unit, b.SalePrice } into g
-        //                 orderby g.Key.Id
-        //                 select new
-        //                 {
-
-        //                     g.Key.Id,
-        //                     g.Key.Name,
-        //                     g.Key.Producer,
-        //                     g.Key.Status,
-        //                     g.Key.Unit,
-        //                     g.Key.SalePrice
-        //                 });
-
-        //    List<dynamic> dynamicList = new List<dynamic>();
-        //    foreach (var obj in query)
-        //    {
-        //        dynamic dynamicObj = new ExpandoObject();
-
-        //        // Thêm từng thuộc tính vào đối tượng động
-        //        dynamicObj.Id = obj.Id;
-        //        dynamicObj.Name = obj.Name;
-        //        dynamicObj.Producer = obj.Producer;
-        //        dynamicObj.Status = obj.Status;
-        //        dynamicObj.Unit = obj.Unit;
-        //        dynamicObj.SalePrice = obj.SalePrice;
-
-        //        dynamicList.Add(dynamicObj);
-        //    }
-        //    return dynamicList;
-        //}
     }
 }
+
+

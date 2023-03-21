@@ -1,48 +1,57 @@
 ﻿@page
 @model ProjectFinal.Pages.Transaction.ImportsModel
 @{
-    var listImport = Model.dbContext.ImportProducts.ToList();
-    var listUser = Model.dbContext.Users.ToList();
-    var listSupplier = Model.dbContext.Suppliers.ToList();
+    var pageingmodel = new Helper.PagingModel()
+            {
+                currentpage = Model.currentPage,
+                countpages = Model.countPages,
+                generateUrl = (int? p) => @Url.Page("/Transaction/Imports", new { p = p })
+            };
 }
- <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div>
-                            <i class="fa fa-align-justify"></i> Danh Sách Hóa Đơn Nhập Hàng
-                        </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Danh Sách Hóa Đơn Nhập Hàng
+                </div>
+                <div class="row">
+                    <form method="get">
                         <div class="row">
-                            <input style="width:200px" class="form-control col-lg-5" type="text" placeholder="Tìm Kiếm">  
-                            <p class="col-lg-1"></p>
-                            <a style="width:100px" class="btn btn-block btn-primary col-lg-5" href="#">Thêm Mới</a>
-                         </div>
-                    </div>
-                    
-                    <div class="card-body">
-                        <table class="table table-responsive-sm table-bordered table-striped table-sm">
-                            <thead>
-                                 <tr>
-                                    <th>ID</th>
-                                    <th>UserName</th>
-                                    <th>Tên Người Nhập</th>
-                                    <th>Ngày Nhập </th>
-                                    <th>Nhà Phân Phối</th>
-                                    <th>Tổng Hóa Đơn</th>
-                                    <th>Hành Động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        @if (listImport != null)
+                            <input style="width: 200px;" type="text" class="form-control" value="@Model.searchString" name="searchString" placeholder="Nhập tên nhà cung cấp...">
+                            <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>UserName</th>
+                            <th>Tên Người Nhập</th>
+                            <th>Ngày Nhập </th>
+                            <th>Nhà Phân Phối</th>
+                            <th>Tổng Hóa Đơn</th>
+                            <th>Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (@Model.ImportProducts != null)
                         {
-                           @foreach (var p in listImport)
+                            @foreach (var p in @Model.ImportProducts)
                             {
                                 <tr>
                                     <td>@p.Id</td>
                                     <td>@p.UserName</td>
-                                    <td>@listUser.SingleOrDefault(e => e.Username == p.UserName).Name</td>
+                                    <td>@Model.Users.SingleOrDefault(e => e.Username == p.UserName).Name</td>
                                     <td>@p.DateImport</td>
-                                    <td>@listSupplier.SingleOrDefault(e => e.Id == p.Supplier).Name</td>
+                                    <td>@Model.Suppliers.SingleOrDefault(e => e.Id == p.Supplier).Name</td>
                                     <td>@p.TotalBill</td>
                                     <td style="width: 150px">
                                         <div class="d-flex justify-content-around">
@@ -51,38 +60,18 @@
                                         </div>
                                     </td>
                                 </tr>
-                            }  
+                            }
                         }
-                        else{
+                        else
+                        {
 
                             <p>Không có sản phẩm nào được tìm thấy</p>
                         }
-                            </tbody>
-                        </table>
-                        <nav>
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Prev</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">4</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                    </tbody>
+                </table>
+                <partial name="_Page" model="@pageingmodel" />
             </div>
-            <!-- /.col-->
         </div>
+    </div>
+    <!-- /.col-->
+</div>

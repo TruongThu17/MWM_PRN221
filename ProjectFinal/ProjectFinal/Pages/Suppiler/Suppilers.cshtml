@@ -2,7 +2,6 @@
 @model ProjectFinal.Pages.Suppiler.SuppilersModel
 @{
     ViewData["Title"] = "Đối Tác";
-    int i = 0;
 }
 @{
     var pageingmodel = new Helper.PagingModel()
@@ -36,24 +35,6 @@
                             Thêm Mới
                     </button>
                 </div>
-                @*<div class="row">
-                    <form method="get">
-                    <div class="col-lg-8">
-                        
-                        <div class="row">
-                                <div class="form-group col-lg-8">
-                                    <input type="text" class="form-control" value="@Model.searchString" name="searchString" placeholder="Nhập tên đối tác...">
-                                </div>
-                                <div class="col-lg-4">
-                                    <button type="submit" class="btn btn-primary ">Tìm kiếm</button>
-                                </div>
-                        </div>
-                    </div>
-                    </form>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
-                        Thêm Mới
-                    </button>
-                </div>*@
             </div>
             <div class="card-body">
                 <table class="table table-responsive-sm table-bordered table-striped table-sm">
