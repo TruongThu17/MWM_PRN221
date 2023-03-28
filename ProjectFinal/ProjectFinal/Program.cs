@@ -2,6 +2,7 @@ using AdminWebCore.Configurations.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using ProjectFinal.DataService;
 using ProjectFinal.Models;
 using System.Text.Json;
 
@@ -10,12 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 //builder.Services.AddSingleton<MWMSystemContext>();
+builder.Services.AddScoped<Author>();
 builder.Services.AddDbContext<MWMSystemContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("MWMSystem")
     ));
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
-
 
 builder.Services.AddOpenApiDocument(config =>
 {
@@ -61,6 +62,13 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
     });
 
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -79,5 +87,5 @@ app.UseCors(policy =>
     policy.AllowAnyOrigin()
         .AllowAnyMethod()
         .AllowAnyHeader());
-
+app.UseSession();
 app.Run();

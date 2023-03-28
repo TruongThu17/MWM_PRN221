@@ -21,11 +21,11 @@ namespace ProjectFinal.Models
         public virtual DbSet<ImportProduct> ImportProducts { get; set; } = null!;
         public virtual DbSet<InforImport> InforImports { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
+        public virtual DbSet<ProductReturnImport> ProductReturnImports { get; set; } = null!;
         public virtual DbSet<ProductType> ProductTypes { get; set; } = null!;
         public virtual DbSet<ProductsInBill> ProductsInBills { get; set; } = null!;
         public virtual DbSet<ProductsReturn> ProductsReturns { get; set; } = null!;
         public virtual DbSet<Return> Returns { get; set; } = null!;
-        public virtual DbSet<ReturnImport> ReturnImports { get; set; } = null!;
         public virtual DbSet<ReturnImportProduct> ReturnImportProducts { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Supplier> Suppliers { get; set; } = null!;
@@ -33,7 +33,11 @@ namespace ProjectFinal.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("server=DESKTOP-PVD65DI;database=MWMSystem;uid=sa;password=123456;Integrated Security=True;TrustServerCertificate=true");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -187,6 +191,33 @@ namespace ProjectFinal.Models
                     .HasConstraintName("FK_ProductType_Table_1");
             });
 
+            modelBuilder.Entity<ProductReturnImport>(entity =>
+            {
+                entity.HasKey(e => new { e.Idreturn, e.Idproduct, e.Idimport });
+
+                entity.ToTable("ProductReturnImport");
+
+                entity.Property(e => e.Idreturn).HasColumnName("IDReturn");
+
+                entity.Property(e => e.Idproduct).HasColumnName("IDProduct");
+
+                entity.Property(e => e.Idimport).HasColumnName("IDImport");
+
+                entity.Property(e => e.Price).HasColumnType("money");
+
+                entity.HasOne(d => d.IdreturnNavigation)
+                    .WithMany(p => p.ProductReturnImports)
+                    .HasForeignKey(d => d.Idreturn)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductReturnImport_ReturnImportProduct");
+
+                entity.HasOne(d => d.Id)
+                    .WithMany(p => p.ProductReturnImports)
+                    .HasForeignKey(d => new { d.Idimport, d.Idproduct })
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductReturnImport_InforImport");
+            });
+
             modelBuilder.Entity<ProductType>(entity =>
             {
                 entity.ToTable("ProductType");
@@ -232,6 +263,8 @@ namespace ProjectFinal.Models
                 entity.Property(e => e.Idbill).HasColumnName("IDBill");
 
                 entity.Property(e => e.Idproduct).HasColumnName("IDProduct");
+
+                entity.Property(e => e.Price).HasColumnType("money");
 
                 entity.HasOne(d => d.IdreturnNavigation)
                     .WithMany(p => p.ProductsReturns)
@@ -287,15 +320,6 @@ namespace ProjectFinal.Models
                     .HasConstraintName("FK_Return_User");
             });
 
-            modelBuilder.Entity<ReturnImport>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("ReturnImport");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-            });
-
             modelBuilder.Entity<ReturnImportProduct>(entity =>
             {
                 entity.ToTable("ReturnImportProduct");
@@ -304,7 +328,7 @@ namespace ProjectFinal.Models
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
-                entity.Property(e => e.IdimportProduct).HasColumnName("IDImportProduct");
+                entity.Property(e => e.Idimport).HasColumnName("IDImport");
 
                 entity.Property(e => e.Totalbill)
                     .HasColumnType("money")
@@ -315,9 +339,9 @@ namespace ProjectFinal.Models
                     .IsUnicode(false)
                     .HasColumnName("username");
 
-                entity.HasOne(d => d.IdimportProductNavigation)
+                entity.HasOne(d => d.IdimportNavigation)
                     .WithMany(p => p.ReturnImportProducts)
-                    .HasForeignKey(d => d.IdimportProduct)
+                    .HasForeignKey(d => d.Idimport)
                     .HasConstraintName("FK_ReturnImportProduct_ImportProduct");
 
                 entity.HasOne(d => d.SuppilerNavigation)

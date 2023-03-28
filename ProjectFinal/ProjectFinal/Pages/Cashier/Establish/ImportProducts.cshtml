@@ -1,0 +1,470 @@
+﻿@page
+@model ProjectFinal.Pages.Cashier.Establish.ImportProductsModel
+@{
+    ViewData["Title"] = "Nhập Hàng";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="row" style="height:100px;">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Nhập Hàng
+                </div>
+            </div>
+            <div class="mx-5 ">
+                <div class="form-group row mt-5">
+                    <label asp-for="ImportProduct.UserName" class="col-md-2 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="ImportProduct.UserName" id="username" value="thutt" class="form-control" />
+                        <span asp-validation-for="ImportProduct.UserName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row mt-3">
+                    <label class="control-label col-md-2">Tên Người Nhập</label>
+                    <div class="col-md-8">
+                        <input value="Trương Thu" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label asp-for="ImportProduct.CodeImport" class="col-md-2 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="ImportProduct.CodeImport" id="codeImport" class="form-control" />
+                        <span asp-validation-for="ImportProduct.CodeImport" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <label asp-for="ImportProduct.DateImport" class="control-label col-md-2"></label>
+                    <div class="col-md-8">
+                        <input asp-for="ImportProduct.DateImport" id="dateimport" type="datetime-local" class="form-control" />
+                        <span asp-validation-for="ImportProduct.DateImport" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row mt-3">
+                    <label class="col-md-2 col-form-label" for="supplier">Nhà Phân Phối</label>
+                    <div class="col-md-8">
+                        <select id="supplier" name="supplier" asp-items="@Model.dbContext.Suppliers.Select(p => new SelectListItem { Value = p.Id.ToString(), Text = p.Name })" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+
+                    <label asp-for="ImportProduct.TotalBill" class="control-label col-md-2 " style="font-weight: bold;"></label>
+                    <div class="col-md-8">
+                        <input asp-for="ImportProduct.TotalBill" id="totalBill" class="form-control" value="0" />
+                        <span asp-validation-for="ImportProduct.TotalBill" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <div class="form-group col-md-2">
+                        <button type="button" class="btn btn-primary mx-3 " data-toggle="modal" data-target="#createModal">
+                            Nhập Sản Phẩm
+                        </button>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <button type="button" class="btn btn-primary mx-3" data-toggle="modal" data-target="#createModalNewProduct">
+                            Sản Phẩm Mới
+                        </button>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <button type="button" class="btn btn-primary mx-3" data-toggle="modal" data-target="#createModalNewProduct">
+                            Nhà Phân Phối Mới
+                        </button>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <button type="button" class="btn btn-primary mx-3" data-toggle="modal" data-target="#createModalNewProduct">
+                            Loại Sản Phẩm Mới
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <table class="table table-responsive-sm table-bordered table-striped table-sm" style="order: 2; overflow: auto; max-height: 485px;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Giá</th>
+                                <th>Số Lượng</th>
+                                <th>Giảm Giá</th>
+                                <th>Ngày Hết Hạn</th>
+                                <th>Kệ Hàng</th>
+                                <th>Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTableBody">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <input type="submit" onclick="addImport()" value="Lưu" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Products -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel"> Thông Tin Sản Phẩm </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="idproduct">Sản Phẩm</label>
+                    <div class="col-md-9">
+                        <select id="idproduct" asp-items="@Model.Products.Select(p => new SelectListItem { Value = p.Id.ToString(), Text = p.Name })" class="form-control"></select>
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="quantityproduct">Số Lượng Nhập</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="quantityproduct" name="quantityproduct" value="0" min="1" type="number" placeholder="Số Lượng... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="discountproduct">Giảm Giá</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="discountproduct" name="discountproduct" value="0" min="0" type="number" placeholder="Giảm Giá... ">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="addProduct()">Thêm Sản Phẩm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add new Products -->
+<div class="modal fade" id="createModalNewProduct" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Tạo Thông Tin Sản Phẩm </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="nameProduct">Tên Sản Phẩm</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="text" placeholder="Tên Sản Phẩm... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="nameProducer">Tên Nhà Sản Xuất</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="nameProducer" name="nameProducer" type="text" placeholder="Tên Nhà Sản Xuất... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="productype">Loại Sản Phẩm</label>
+                    <div class="col-md-9">
+                        <select class="form-control" id="productype" name="productype">
+                            <option value="0">Chọn Loại Sản Phẩm</option>
+                            @foreach (var p in Model.dbContext.ProductTypes)
+                            {
+                                <option value="@p.Id">@p.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="status">Trạng Thái</label>
+                    <div class="col-md-9">
+                        <select class="form-control" id="status" name="status">
+                            <option value="1">Đang Kinh Doanh</option>
+                            <option value="0">Ngưng Kinh Doanh</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="unit">Đơn Vị</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="unit" name="unit" type="text" placeholder="Đơn Vị... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="saleprice">Giá Bán</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="saleprice" name="saleprice" type="text" placeholder="Giá Bán... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="quantityinstock">Tồn Kho</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="quantityinstock" name="quantityinstock" type="text" placeholder="Số Lượng Tồn Kho... ">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="createProduct()">Tạo</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function createProduct() {
+        //Lấy dữ liệu từ các input fields trong form modal
+        var nameProduct1 = $('#nameProduct').val();
+        var nameProducer1 = $('#nameProducer').val();
+        var productype1 = $('#productype').val();
+        var status1 = $('#status').val();
+        var unit1 = $('#unit').val();
+        var saleprice1 = $('#saleprice').val();
+        var quantityinstock1 = $('#quantityinstock').val();
+
+        // Gửi dữ liệu lên server bằng phương thức get
+        $.ajax({
+            url: 'http://localhost:5047/Admin/Managerment/CreateProducts/?handler=Create',
+            type: 'get',
+            data: {
+                nameProduct: nameProduct1,
+                nameProducer: nameProducer1,
+                productype: productype1,
+                status: status1,
+                unit: unit1,
+                saleprice: saleprice1,
+                quantityinstock: quantityinstock1
+            },
+            success: function(result) {
+                // Sau khi tạo thành công, ẩn modal
+                $('#createModal').modal('hide');
+
+                // Reload trang để cập nhật danh sách nhà phân phối
+                location.reload();
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+    }
+    function countProduct() {
+        var products = [];
+        var tableBody = document.getElementById("myTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].querySelectorAll("td");
+            var product = {
+                id: cells[0].innerText,
+                name: cells[1].innerText,
+                price: cells[2].innerText,
+                quantity: cells[3].innerText,
+                discount: cells[4].innerText,
+                total: cells[5].innerText,
+            };
+        }
+        return products.length;
+    }
+    function checkRow(idProduct) {
+        var products = [];
+        var tableBody = document.getElementById("myTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].querySelectorAll("td");
+            var product = {
+                id: cells[0].innerText,
+                name: cells[1].innerText,
+                price: cells[2].innerText,
+                quantity: cells[3].innerText,
+                discount: cells[4].innerText,
+                total: cells[5].innerText
+            };
+            if (idProduct === product.id) {
+                return false;
+            }
+            products.push(product);
+        }
+        return true;
+    }
+    function addProduct() {
+
+        //Lấy dữ liệu từ các input fields trong form modal
+        var idProduct = $('#idproduct').val();
+        var quantity = $('#quantityproduct').val();
+        var discount = $('#discountproduct').val();
+
+        if (checkRow(idProduct)) {
+            var name = null;
+            var countPro = countProduct();
+            var now = new Date().toISOString();
+            console.log(countPro);
+            $.ajax({
+                url: 'http://localhost:5047/Admin/Establish/SearchProduct/?handler=Product&id=' + idProduct,
+                type: 'get',
+                success: function(result) {
+                    name = result.name;
+                    //newRow
+                    var newRow = "<tr><td id ='" + idProduct + "'>" + idProduct
+                        + "</td><td style='width:150px;' id = 'name-" + idProduct + "'>" + name
+                        + "</td><td style='width:150px;'>" + "<input class='form-control' onclick='updateTotal(" + idProduct + ")'  id = 'price-" + idProduct + "' value='0'  min='0' type='number'>"
+                        + "</td><td style='width:150px;'>" + "<input class='form-control' onclick='updateTotal(" + idProduct + ")' id = 'quantity-" + idProduct + "' value = '" + quantity + "' min='1' type='number'>"
+                        + "</td><td style='width:150px;'>" + "<input class='form-control' onclick='updateTotal(" + idProduct + ")' id = 'discount-" + idProduct + "' value = '" + discount + "' min='0' type='number'>"
+                        + "</td><td style='width:150px;'>" + "<input class='form-control' id = 'dateEx-" + idProduct + "' value = '" + now + "' type='datetime-local'>"
+                        + "</td><td style='width:150px;'>" + "<input class='form-control'  id = 'Shelves-" + idProduct + "' value = '' type='text'>"
+                        + "</td><td style='width:150px;' id = 'total-" + idProduct + "'>0</td></tr>";
+                    $('#myTableBody').append(newRow);
+                    $('#createModal').modal('hide');
+                },
+                error: function() {
+                    // Xử lý lỗi tại đây
+                    alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                }
+            });
+        }
+        else {
+            updateQuantity(idProduct, quantity);
+        }
+        updateTotalBill();
+    }
+    function updateTotal(id) {
+        var idQuantity = 'quantity-' + id;
+        var idTotal = 'total-' + id;
+        var idPrice = 'price-' + id;
+        var idDiscount = 'discount-' + id;
+
+        var p = document.getElementById(idQuantity);
+        var t = document.getElementById(idTotal);
+        var pr = document.getElementById(idPrice);
+        var dis = document.getElementById(idDiscount);
+
+        var oldQuantity = p.value;
+        var oldPrice = pr.value;
+        var oldDiscount = dis.value;
+
+
+        var total = (parseInt(oldQuantity) * parseInt(oldPrice)) * (1 - (parseInt(oldDiscount) / 100));
+        t.textContent = total;
+        updateTotalBill()
+    }
+    function updateQuantity(idProduct, quantity) {
+        // update quantity
+        var idQuantity = 'quantity-' + idProduct;
+        var p = document.getElementById(idQuantity);
+        var oldQuantity = p.value;
+        var newQuantity = parseInt(oldQuantity) + parseInt(quantity);
+        p.value = newQuantity;
+        //update total
+        var idTotal = 'total-' + idProduct;
+        var idPrice = 'price-' + idProduct;
+        var idDiscount = 'discount-' + idProduct;
+
+        var t = document.getElementById(idTotal);
+        var pr = document.getElementById(idPrice);
+        var dis = document.getElementById(idDiscount);
+
+        var oldPrice = pr.value;
+        var oldDiscount = dis.value;
+
+        var total = (parseInt(newQuantity) * parseInt(oldPrice)) * (1 - (parseInt(oldDiscount) / 100));
+        t.textContent = total;
+        $('#createModal').modal('hide');
+        updateTotalBill();
+    }
+    function updateTotalBill() {
+        var tableBody = document.getElementById("myTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        var total = 0;
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].querySelectorAll("td");
+            total += parseFloat(cells[7].innerText);
+        }
+        var t = document.getElementById('totalBill');
+        t.value = total;
+    }
+
+    function addImport() {
+        //Lấy dữ liệu từ các input fields trong form modal
+        var username1 = $('#username').val();
+        var dateImport1 = $('#dateimport').val();
+        var totalBill1 = $('#totalBill').val();
+        var supplier = $('#supplier').val();
+        var codeimport1 = $('#codeImport').val();
+        $.ajax({
+            url: 'http://localhost:5047/Admin/Establish/CreateImportProduct/?handler=Create',
+            type: 'get',
+            data: {
+                UserName: username1,
+                DateImport: dateImport1,
+                TotalBill: parseFloat(totalBill1),
+                Supplier: supplier,
+                CodeImport: codeimport1
+            },
+            success: function(result) {
+                SaveImportProduct(result);
+            },
+            error: function() {
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+
+    }
+
+    function SaveImportProduct(id) {
+        var dateImport1 = $('#dateimport').val();
+        var supplier1 = $('#supplier').val();
+        var tableBody = document.getElementById("myTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].querySelectorAll("td");
+                $.ajax({
+                url: 'http://localhost:5047/Admin/Establish/CreateInforImportProduct/?handler=Create',
+                type: 'get',
+                data: {
+                    Idimport: id,
+                    Idproduct: parseInt(cells[0].innerText),
+                    ImportPrice: parseFloat(document.getElementById('price-' + cells[0].innerText).value),
+                    DateExpiry: document.getElementById('dateEx-' + cells[0].innerText).value,
+                    Discount: parseFloat(document.getElementById('discount-' + cells[0].innerText).value),
+                    SupplierId: supplier1,
+                    DateImport: dateImport1,
+                    QuantityImport: parseFloat(document.getElementById('quantity-' + cells[0].innerText).value),
+                    Shelves: document.getElementById('Shelves-' + cells[0].innerText).value
+                },
+                success: function(result) {
+                    location.reload();
+                },
+                error: function() {
+                    // Xử lý lỗi tại đây
+                    alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                }
+            });
+        }
+    }
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

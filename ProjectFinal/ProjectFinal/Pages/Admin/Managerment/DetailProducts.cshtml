@@ -1,0 +1,70 @@
+﻿@page
+@model ProjectFinal.Pages.Admin.Managerment.DetailProductsModel
+@{
+    ViewData["Title"] = "Chi Tiết";
+}
+<div class="row" style="height:100px;">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Chi Tiết Thông Tin Đối Tác
+                </div>
+            </div>
+            <div class="p-3">
+                <dl class="row">
+                    <dt class="col-sm-2 ">
+                        @Html.DisplayNameFor(model => model.Product.Name)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Product.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Product.Producer)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Product.Producer)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Product.ProductType)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Product.ProductType)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Product.Status)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Product.Status)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Product.Unit)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Product.Unit)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Product.SalePrice)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Product.SalePrice)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Product.QuantityInStock)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Product.QuantityInStock)
+                    </dd>
+                </dl>
+                <div class="mt-5">
+                    <a asp-page="./UpdateProducts" asp-route-id="@Model.Product?.Id">Sửa</a> |
+                    <a asp-page="./Products">Danh Sách</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -13,7 +13,7 @@ namespace ProjectFinal.Models
 
         public int Id { get; set; }
         public string Username { get; set; } = null!;
-        public DateTime? DateImport { get; set; }
+        public DateTime DateImport { get; set; }
         public int Idcustomer { get; set; }
         public decimal? TotalBill { get; set; }
         public decimal? Debt { get; set; }

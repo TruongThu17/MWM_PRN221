@@ -1,0 +1,242 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Trang chủ";
+
+}
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-body pb-3">
+                        <div class="btn-group float-right">
+                        </div>
+                        <div class="text-value">@Model.GetTotalByToDay() VND</div>
+                        <div>Doanh Thu Ngày</div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-info">
+                    <div class="card-body pb-3">
+
+                        <div class="text-value">@Model.GetTotalByMonth() VND</div>
+                        <div>Doanh Thu Tháng</div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-warning">
+                    <div class="card-body pb-3">
+                        <div class="btn-group float-right">
+                        </div>
+                        <div class="text-value">@Model.countCustomer</div>
+                        <div>Khách Hàng</div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card text-white bg-danger">
+                    <div class="card-body pb-3">
+                        <div class="btn-group float-right">
+                        </div>
+                        <div class="text-value">@Model.countSupplier</div>
+                        <div>Nhà Cung Cấp</div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- /.row-->
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h4 class="card-title mb-0">Doanh Thu Tháng</h4>
+                    </div>
+                    <!-- /.col-->
+                    <!-- /.col-->
+                </div>
+                <!-- /.row-->
+                <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+                    <canvas class="chart" id="main-chart1" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.row-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Thống Kê Số Đơn và Doanh Thu</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="callout callout-info">
+                                            <small class="text-muted">Số Đơn</small>
+                                            <br>
+                                            <strong class="h4">@(Model.GetTotalByYear(DateTime.Now.Year))</strong>
+                                            <div class="chart-wrapper">
+                                                <canvas id="sparkline-chart-1" width="100" height="30"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.col-->
+                                    <div class="col-sm-6">
+                                        <div class="callout callout-danger">
+                                            <small class="text-muted">Doanh Thu</small>
+                                            <br>
+                                            <strong class="h4">@(Model.GetTotalBillInYear(DateTime.Now.Year)) VND</strong>
+                                            <div class="chart-wrapper">
+                                                <canvas id="sparkline-chart-2" width="100" height="30"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.col-->
+                                </div>
+                                <!-- /.row-->
+                                <hr class="mt-0">
+                                @for (var i = 1; i <= 12; i++)
+                                {
+                                   <div class="progress-group mb-4">
+                                    <div class="progress-group-prepend">
+                                        <span class="progress-group-text">Tháng @i</span>
+                                    </div>
+                                    <div class="progress-group-bars">
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: @(Model.GetTotalByMonth(@i, DateTime.Now.Year))%" aria-valuenow='@(Model.GetTotalByMonth(@i, DateTime.Now.Year))' aria-valuemin="0" aria-valuemax="1000000000"></div>                                       
+                                            </div>
+                                        <div class="progress progress-xs">
+
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: @(Model.GetTotalBillInmonth(@i, DateTime.Now.Year))%" aria-valuenow=" @(Model.GetTotalBillInmonth(@i, DateTime.Now.Year))" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                }
+                            </div>
+                            <!-- /.col-->
+                            <!-- /.col-->
+                        </div>
+                        <!-- /.row-->
+                        <br>
+                        <table class="table table-responsive-sm table-hover table-outline mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center">
+                                        <i class="icon-people"></i>
+                                    </th>
+                                    <th>User</th>
+                                    <th>User Name</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Trạng Thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Users != null)
+                                {
+                                    @foreach (var u in Model.Users)
+                                    {
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="avatar">
+                                                    <img class="img-avatar" src="~/lib/coreui/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status badge-success"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>@u.Name</div>
+
+                                            </td>
+                                            <td>
+                                                <div>@u.Username</div>
+
+                                            </td>
+                                            <td>
+                                                <div>@u.Phone</div>
+                                            </td>
+                                            <td>
+                                                <div>@u.Address</div>
+                                            </td>
+                                            <td>
+                                                <div>@u.Email</div>
+                                            </td>
+                                            <td>
+                                                @if(@u.Status){
+
+                                                    <div>Đang hoạt động</div>
+                                                }
+                                                else
+                                                {
+                                                    <div>Ngưng hoạt động</div>
+                                                }
+                                            </td>
+
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- /.row-->
+    </div>
+</div>
+@{
+    var chartBoard2 = Json.Serialize(Model.ChartBoard2);
+}
+@section Scripts {
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            //var data1 = [100, 180, 90, 100, 110, 120, 130, 100, 100, 100, 100, 100];
+            var chartBoard2 = @Html.Raw(chartBoard2);
+            var data1 = Array.from(chartBoard2);
+            var ctx = document.getElementById('main-chart1').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+                    datasets: [{
+                        label: "Doanh thu",
+                        backgroundColor: 'rgba(0, 128, 255, 0.2)',
+                        borderColor: 'rgba(0, 128, 255, 1)',
+                        pointBackgroundColor: 'rgba(0, 128, 255, 1)', 
+                        pointBorderColor: '#fff',
+                        data: data1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    onHover: function(event, chartElement) {
+                        if (chartElement.length > 0) {
+                            var datasetIndex = chartElement[0]._datasetIndex;
+                            if (datasetIndex === 0) {
+                                chart.data.datasets[0].data = data1;
+                            } else if (datasetIndex === 1) {
+                                chart.data.datasets[0].data = data1;
+                            }
+                            chart.update();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script src="~/lib/chart.js/dist/Chart.js"></script>
+    <script src="~/lib/coreui/js/custom-tooltips.min.js"></script>
+    <script src="~/lib/coreui/js/main.js"></script>
+}

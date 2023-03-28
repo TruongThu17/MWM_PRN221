@@ -1,303 +1,62 @@
 ﻿@page
 @model ProjectFinal.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Login";
+    Layout = "_LayoutFullScreen";
 }
 
 <div class="container-fluid">
     <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-primary">
-                    <div class="card-body pb-3">
-                        <div class="btn-group float-right">
-                            @*<button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-settings"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>*@
-                        </div>
-                        <div class="text-value">9.823</div>
-                        <div>Doanh Thu Ngày</div>
-                    </div>
-                    @*<div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                        <canvas class="chart" id="card-chart1" height="70"></canvas>
-                    </div>*@
-                </div>
-            </div>
-            <!-- /.col-->
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-info">
-                    <div class="card-body pb-3">
-                        @*<button class="btn btn-transparent p-0 float-right" type="button">
-                            <i class="icon-location-pin"></i>
-                        </button>*@
-                        <div class="text-value">9.823</div>
-                        <div>Doanh Thu Tháng</div>
-                    </div>
-                    @*<div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                        <canvas class="chart" id="card-chart2" height="70"></canvas>
-                    </div>*@
-                </div>
-            </div>
-            <!-- /.col-->
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-warning">
-                    <div class="card-body pb-3">
-                        <div class="btn-group float-right">
-                        </div>
-                        <div class="text-value">@Model.countCustomer</div>
-                        <div>Khách Hàng</div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.col-->
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-danger">
-                    <div class="card-body pb-3">
-                        <div class="btn-group float-right">
-                            
-                        </div>
-                        <div class="text-value">@Model.countSupplier</div>
-                        <div>Nhà Cung Cấp</div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.col-->
-        </div>
-        <!-- /.row-->
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <h4 class="card-title mb-0">Doanh Thu</h4>
-                        <div class="small text-muted">14/2/2023</div>
-                    </div>
-                    <!-- /.col-->
-                    <div class="col-sm-7 d-none d-md-block">
-                        @*<button class="btn btn-primary float-right" type="button">
-                            <i class="icon-cloud-download"></i>
-                        </button>*@
-                        <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
-                            <label class="btn btn-outline-secondary">
-                                <input id="option1" type="radio" name="options" autocomplete="off"> Ngày
-                            </label>
-                            <label class="btn btn-outline-secondary active">
-                                <input id="option2" type="radio" name="options" autocomplete="off" checked=""> Tháng
-                            </label>
-                            <label class="btn btn-outline-secondary">
-                                <input id="option3" type="radio" name="options" autocomplete="off"> Năm
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col-->
-                </div>
-                <!-- /.row-->
-                <div class="chart-wrapper" style="height:300px;margin-top:40px;">
-                    <canvas class="chart" id="main-chart" height="300"></canvas>
-                </div>
-            </div>
-        </div>
-       
-        <!-- /.row-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Thống Kê Lãi và Doanh Thu</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="callout callout-info">
-                                            <small class="text-muted">Tổng Lãi</small>
-                                            <br>
-                                            <strong class="h4">9,123</strong>
-                                            <div class="chart-wrapper">
-                                                <canvas id="sparkline-chart-1" width="100" height="30"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.col-->
-                                    <div class="col-sm-6">
-                                        <div class="callout callout-danger">
-                                            <small class="text-muted">Doanh Thu</small>
-                                            <br>
-                                            <strong class="h4">22,643</strong>
-                                            <div class="chart-wrapper">
-                                                <canvas id="sparkline-chart-2" width="100" height="30"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.col-->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card-group">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            <h1>Đăng Nhập</h1>
+                            <p class="text-muted">Đăng Nhập Tài khoản Của Bạn</p>
+                            <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="icon-user"></i>
+                                    </span>
                                 </div>
-                                <!-- /.row-->
-                                <hr class="mt-0">
-                                <div class="progress-group mb-4">
-                                    <div class="progress-group-prepend">
-                                        <span class="progress-group-text">Thứ 2</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
+                                <input class="form-control" type="text" asp-for="user.Username" placeholder="Username">
+                                <span asp-validation-for="user.Username" class="text-danger"></span>
+                            </div>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="icon-lock"></i>
+                                    </span>
                                 </div>
-                                <div class="progress-group mb-4">
-                                    <div class="progress-group-prepend">
-                                        <span class="progress-group-text">Thứ 3</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
+                                <input class="form-control" type="password" asp-for="user.Password" placeholder="Mật khẩu">
+                                <span asp-validation-for="user.Password" class="text-danger"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button class="btn btn-primary px-4" type="submit">Đăng Nhập</button>
                                 </div>
-                                <div class="progress-group mb-4">
-                                    <div class="progress-group-prepend">
-                                        <span class="progress-group-text">Thứ 4</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="progress-group mb-4">
-                                    <div class="progress-group-prepend">
-                                        <span class="progress-group-text">Thứ 5</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 91%" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="progress-group mb-4">
-                                    <div class="progress-group-prepend">
-                                        <span class="progress-group-text">Thứ 6</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="progress-group mb-4">
-                                    <div class="progress-group-prepend">
-                                        <span class="progress-group-text">Thứ 7</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 53%" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="progress-group mb-4">
-                                    <div class="progress-group-prepend">
-                                        <span class="progress-group-text">Chủ Nhật</span>
-                                    </div>
-                                    <div class="progress-group-bars">
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-info" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 69%" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
+                                <div class="col-6 text-right">
+                                    <button class="btn btn-link px-0" type="button">Đổi Mật Khẩu?</button>
                                 </div>
                             </div>
-                            <!-- /.col-->
-                            
-                            <!-- /.col-->
+                            </form>
                         </div>
-                        <!-- /.row-->
-                        <br>
-                        <table class="table table-responsive-sm table-hover table-outline mb-0">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="text-center">
-                                        <i class="icon-people"></i>
-                                    </th>
-                                    <th>User</th>
-                                    <th>User Name</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Email</th>
-                                    <th>Trạng Thái</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model.Users != null)
-                                {
-                                    @foreach (var u in Model.Users)
-                                    {
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="avatar">
-                                                <img class="img-avatar" src="~/lib/coreui/img/avatars/1.jpg" alt="admin@bootstrapmaster.com">
-                                                <span class="avatar-status badge-success"></span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div>@u.Name</div>
-                                            
-                                        </td>
-                                        <td>
-                                            <div>@u.Username</div>
-                                            
-                                        </td>
-                                        <td>
-                                            <div>@u.Phone</div>
-                                        </td>
-                                        <td>
-                                            <div>@u.Address</div>
-                                        </td>
-                                        <td>
-                                            <div>@u.Email</div>
-                                        </td>
-                                        <td>
-                                            <div>@u.Status</div>
-                                        </td>
-                                        
-                                    </tr>
-                                    }
-                                }
-                                
-                            </tbody>
-                        </table>
+                    </div>
+                    <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                        <div class="card-body text-center">
+                            <div>
+                                <h2>MWM System</h2>
+                                <p>Hệ thống được xây dựng lên nhằm mục đích quản lý xuất nhập kho hàng hóa. 
+                                    Giúp thuận tiện kho việc quản lý kho hàng hóa một cách thuận tiện!
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /.col-->
         </div>
-        <!-- /.row-->
     </div>
 </div>
-
-@section Scripts {
-    <script src="~/lib/chart.js/dist/Chart.min.js"></script>
-    <script src="~/lib/coreui/js/custom-tooltips.min.js"></script>
-    <script src="~/lib/coreui/js/main.js"></script>
-}

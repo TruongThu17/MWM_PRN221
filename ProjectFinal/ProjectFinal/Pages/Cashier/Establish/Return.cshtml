@@ -1,0 +1,341 @@
+﻿@page
+@model ProjectFinal.Pages.Cashier.Establish.ReturnModel
+@{
+    ViewData["Title"] = "Trả Hàng";
+}
+<style>
+    tr:hover td {
+        background-color: skyblue;
+    }
+
+    .hover {
+        background-color: skyblue;
+    }
+    #error {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="card flex-column ">
+                    <div class="divider mx-3 mt-3 form-group row " style="order: 1;">
+                        <input style="width: 350px;" type="text" class="form-control" value="" id="searchString" placeholder="Mã Hóa Đơn...">
+                        <button type="submit" class="btn btn-primary mx-3" onclick="searchBill()">Tìm kiếm</button>
+                    </div>
+                    <div class="card mx-3" id="mySearch" style="position: absolute; left: 0; z-index: 10;top:55px; display:none; order: 2; overflow: auto; max-height: 500px;">
+                        <table class="table table-responsive-sm" id="tableSearch">
+                            <thead>
+                                <tr>
+                                    <th style="font-size:12px;">Mã Hóa Đơn</th>
+                                    <th style="font-size:12px;">Tên Khách Hàng</th>
+                                    <th style="font-size:12px;">Ngày Mua</th>
+                                    <th style="font-size:12px;">Tổng Hóa Đơn</th>
+                                    <th style="font-size:12px;">Giảm Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody id="billSearch">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-body mt-auto" style="order: 2; overflow: auto; max-height: 485px;">
+                        <table class="table table-responsive-sm">
+                            <thead>
+                                <tr>
+                                    <th style="font-size:12px;">Mã Sản Phẩm</th>
+                                    <th style="font-size:12px;">Tên Sản Phẩm</th>
+                                    <th style="font-size:12px;">Giá</th>
+                                    <th style="font-size:12px;">Số Lượng</th>
+                                    <th style="font-size:12px;">Thành Tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-lg-5 ">
+                <div class="card d-flex flex-column" style="height:550px;">
+                    <div class="mx-1 mt-3 mt-autoform-group row">
+                        <div class="col-md-6 text-left">
+                            <select class="form-control form-control-sm" id="Username" name="Username">
+                                <option value="thutt">Trương Thu</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 float-right text-right">
+                            <div id="current-time"></div>
+                        </div>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label" for="idBill" style="font-weight: bold;">Mã Hóa Đơn</label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="idBill"></span>
+                        </div>
+                        <span class="form-control" style="display:none;" id="customerId"></span>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label" for="customerName" style="font-weight: bold;">Tên Khách Hàng</label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="nameCustomer"></span>
+                        </div>
+                        <span class="form-control" style="display:none;" id="customerId"></span>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label" for="totalBill" style="font-weight: bold;">Ngày Mua</label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="dateBuy">0</span>
+                        </div>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label" for="discount" style="font-weight: bold;">Mã Giảm Giá</label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="discount">0</span>
+                        </div>
+                        <div class="col-md-2 mt-1">%</div>
+                    </div>
+                    <div class="mx-3  mt-auto form-group row">
+                        <label class="col-md-3 col-form-label " for="money" style="font-weight: bold;">Thành Tiền: </label>
+                        <div class="col-md-7">
+                            <span class="form-control" id="money">0</span>
+                        </div>
+                        <div class="col-md-2">VND</div>
+                    </div>
+                    <div class=" mt-auto form-group d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary mx-3" style="height:50px; width:350px; font-size:20px; font-weight: bold;" onclick="SaveReturn()">
+                            Trả Hàng
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+    </div>
+</div>
+<script>
+    // Lấy thẻ div chứa kết quả tìm kiếm
+    const searchResults = document.getElementById('mySearch');
+    // Lắng nghe sự kiện click của document
+    document.addEventListener('click', function(event) {
+        // Kiểm tra nếu người dùng click ra ngoài thẻ div chứa kết quả tìm kiếm
+        if (!searchResults.contains(event.target)) {
+            // Thiết lập thuộc tính display của thẻ div thành none để ẩn đi
+            searchResults.style.display = 'none';
+        }
+    });
+    setInterval(function() {
+        var currentTime = new Date();
+        var options = { timeZone: 'Asia/Ho_Chi_Minh', hour12: false };
+        var vnTime = currentTime.toLocaleString('en-US', options);
+        document.getElementById('current-time').innerHTML = vnTime;
+    }, 1000);
+
+    $(document).ready(function() {
+        $('tr').hover(function() {
+            $(this).addClass('hover');
+        }, function() {
+            $(this).removeClass('hover');
+        });
+    });
+    $(document).on('input', 'input[id^="quantity-"]', function() {
+        var inputSuffix = $(this).attr('id').split('-')[1];
+        console.log(document.getElementById('qua-' + inputSuffix).innerHTML);
+        updateT(inputSuffix);
+    });
+
+
+    function searchBill() {
+        var searchQuery = $('#searchString').val();
+        $.ajax({
+            url: 'http://localhost:5047/Admin/Establish/SearchBilll/?handler=Search',
+            type: 'get',
+            data: { query: parseInt(searchQuery) },
+            success: function(result) {
+                if (result) {
+                    // Xóa các sản phẩm hiện có trong table
+                    $('#billSearch').empty();
+                    // Thêm các sản phẩm tìm kiếm vào table
+                    //console.log(result);
+                    var newRow = "<tr onclick='addBill(" + result.Id + ")'><td id='Addbill-" + result.Id + "'>" + result.Id +
+                        "</td><td id='AddCustomer-" + result.Id + "'>" + result.IdcustomerNavigation.Name +
+                        "</td><td id='AddDate-" + result.Id + "'>" + new Date(result.DateImport).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }) +
+                        "</td><td id='AddTotal-" + result.Id + "'>" + result.TotalBill +
+                        "</td><td id='AddDiscount-" + result.Id + "'>" + result.Discount +
+                        "</td></tr>";
+
+                    $('#billSearch').append(newRow);
+                    document.querySelector("#mySearch").style.display = "block";
+                }
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+    }
+    function addBill(id) {
+        var idBill = document.getElementById('idBill');
+        idBill.textContent = id;
+
+        var nameCustomer = document.getElementById('nameCustomer');
+        var name = document.getElementById('AddCustomer-' + id).innerHTML;
+        nameCustomer.textContent = name;
+
+        var dateBuy = document.getElementById('dateBuy');
+        var date = document.getElementById('AddDate-' + id).innerHTML;
+        dateBuy.textContent = date;
+
+        var discount = document.getElementById('discount');
+        var dis = document.getElementById('AddDiscount-' + id).innerHTML;
+        discount.textContent = dis;
+
+        var money = document.getElementById('money');
+        var m = document.getElementById('AddTotal-' + id).innerHTML;
+        money.textContent = m;
+
+        addProductInBill(id);
+    }
+    function addProductInBill(id) {
+        $.ajax({
+            url: 'http://localhost:5047/Admin/Establish/SearchBilll/?handler=Product',
+            type: 'get',
+            data: { query: parseInt(id) },
+            success: function(result) {
+                if (result) {
+                    // Xóa các sản phẩm hiện có trong table
+                    $('#productTableBody').empty();
+                    // Thêm các sản phẩm tìm kiếm vào table
+                    $.each(result, function(index, product) {
+                        console.log(product);
+                        //ten san pham
+                        customerName(product.idproduct);
+                        var newRow = "<tr><td id='product-" + product.idproduct + "'>" + product.idproduct +
+                            "</td><td id='name-" + product.idproduct + "'>" + product.idproduct +
+                            "</td><td id='price-" + product.idproduct + "'>" + product.price +
+                            "</td><td><input id='quantity-" + product.idproduct + "'onclick = 'updateT(" + product.idproduct + ")' class='form-control' type='number' style= 'width: 75px;' max='" + product.quatity + "' min='0' value='0' >" +
+                            "</td><td id='total-" + product.idproduct + "'>" + 0 + "</td></tr>";
+                        $('#productTableBody').append(newRow);
+                    });
+                    document.querySelector("#mySearch").style.display = "block";
+                }
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+    }
+    function customerName(id) {
+
+        $.ajax({
+            url: 'http://localhost:5047/Admin/Establish/SearchProduct/?handler=Product',
+            type: 'get',
+            data: { id: parseInt(id) },
+            success: function(result) {
+                if (result) {
+                    // Xóa các sản phẩm hiện có trong table
+                    console.log(result);
+                    var nameP = document.getElementById('name-' + id);
+                    nameP.textContent = result.name;
+                }
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+    }
+    function updateT(id) {
+        var quantity = document.getElementById('quantity-' + id).value;
+        var price = document.getElementById('price-' + id).innerHTML;
+        var total = document.getElementById('total-' + id);
+
+        var t = parseInt(quantity) * parseFloat(price)
+        total.textContent = t;
+        updateMoney();
+    }
+    function updateMoney() {
+        var money = $('#money').innerText;
+        //danh sách product
+        var products = [];
+        var tableBody = document.getElementById("productTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        var t = 0;
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].querySelectorAll("td");
+
+            t += parseInt(cells[4].innerText);
+        }
+        document.getElementById("money").textContent = t;
+    }
+    function SaveReturn() {
+        var idBill = document.getElementById('idBill').innerHTML;
+        var total = document.getElementById('money').innerHTML;
+        $.ajax({
+            url: 'http://localhost:5047/Admin/Establish/CreateReturn/?handler=Create',
+            type: 'get',
+            data: { id: parseInt(idBill), total: parseFloat(total) },
+            success: function(result) {
+                saveProduct(result);
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+
+    }
+    function saveProduct(idR) {
+        var idBill = document.getElementById('idBill').innerHTML;
+        var products = [];
+        var tableBody = document.getElementById("productTableBody");
+        var rows = tableBody.querySelectorAll("tr");
+        var t = 0;
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].querySelectorAll("td");
+            alert(idR+ idBill+ parseInt(cells[0].innerText) +parseFloat(cells[2].innerText) + parseInt($('#quantity-' + cells[0].innerText).val()));
+            $.ajax({
+                url: 'http://localhost:5047/Admin/Establish/CreateProductInReturn',
+                type: 'get',
+                data: {
+                    idR: idR,
+                    IdB: idBill,
+                    IdP: parseInt(cells[0].innerText),
+                    Price: parseFloat(cells[2].innerText),
+                    Quatity: parseInt($('#quantity-' + cells[0].innerText).val())
+                },
+                success: function(result) {
+                    console.log(result);
+                },
+                error: function() {
+                    // Xử lý lỗi tại đây
+                    alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+                },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                }
+            });
+        }
+    }
+</script>

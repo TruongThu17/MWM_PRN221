@@ -5,6 +5,11 @@ namespace ProjectFinal.Models
 {
     public partial class InforImport
     {
+        public InforImport()
+        {
+            ProductReturnImports = new HashSet<ProductReturnImport>();
+        }
+
         public int Idimport { get; set; }
         public int Idproduct { get; set; }
         public decimal ImportPrice { get; set; }
@@ -18,5 +23,6 @@ namespace ProjectFinal.Models
         public virtual ImportProduct IdimportNavigation { get; set; } = null!;
         public virtual Product IdproductNavigation { get; set; } = null!;
         public virtual Supplier Supplier { get; set; } = null!;
+        public virtual ICollection<ProductReturnImport> ProductReturnImports { get; set; }
     }
 }

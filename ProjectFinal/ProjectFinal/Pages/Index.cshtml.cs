@@ -1,31 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ProjectFinal.Models;
+using System.Text.Json;
 
 namespace ProjectFinal.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         public readonly MWMSystemContext dbContext;
-
-        public List<User> Users { get; set; }
-
-        public int countSupplier { get; set; }
-
-        public int countCustomer { get; set; }
-
-        public IndexModel(ILogger<IndexModel> logger, MWMSystemContext dbContext)
+        public IndexModel(MWMSystemContext context)
         {
-            _logger = logger;
-            this.dbContext = dbContext;
+            dbContext = context;
         }
 
-        public void OnGet()
+        [BindProperty]
+        public User user { get; set; } = default!;
+        public async Task<IActionResult> OnPostAsync()
         {
-            countCustomer = dbContext.Customers.Count();
-            countSupplier = dbContext.Suppliers.Count();
-            Users = dbContext.Users.ToList();
+            User _user = dbContext.Users.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
+            if (_user != null)
+            {
+                HttpContext.Session.SetString("user", JsonSerializer.Serialize(_user));
+                switch (_user.Role)
+                {
+                    case 1:
+                        return RedirectToPage("./Admin/Index");
+                    case 2:
+                        return RedirectToPage("./Cashier/Index");
+                        //case 3:
+                        //    return RedirectToPage("./WarehouseStaff/Products/Index");
+                }
+
+            }
+            ModelState.AddModelError("", "Sai tên đăng nhập hoặc mật khẩu");
+            return Page();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ProjectFinal.Models
         public int Idbill { get; set; }
         public int Idproduct { get; set; }
         public int? Quantity { get; set; }
-        public double? Discount { get; set; }
+        public decimal? Price { get; set; }
 
         public virtual ProductsInBill Id { get; set; } = null!;
         public virtual Return IdreturnNavigation { get; set; } = null!;

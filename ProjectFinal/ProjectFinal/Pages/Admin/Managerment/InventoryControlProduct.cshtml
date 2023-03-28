@@ -1,0 +1,102 @@
+﻿@page
+@model ProjectFinal.Pages.Admin.Managerment.InventoryControlProductModel
+@{
+    var pageingmodel = new Helper.PagingModel()
+            {
+                currentpage = Model.currentPage,
+                countpages = Model.countPages,
+                generateUrl = (int? p) => @Url.Page("/Admin/Managerment/InventoryControlProduct", new { p = p })
+            };
+
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <i class="fa fa-align-justify"></i> Kiểm Kho
+                        </div>
+                        <div class="row">
+                        <form method="get">
+                            <div class="row">
+                                <input style="width: 200px;" type="text" class="form-control" value="@Model.searchString" name="searchString" placeholder="Nhập tên đối tác...">
+                                <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                            <thead>
+                                 <tr>
+                                    <th>Mã Sản Phẩm</th>
+                                    <th>Tên Sản Phẩm</th>
+                                    <th>Nhà Sản Xuất</th>
+                                    <th>Giá Nhập</th>
+                                    <th>Giá Bán</th>
+                                    <th>Ngày Nhập</th>
+                                    <th>Hạn Sử Dụng</th>
+                                    <th>Nhà Phân Phối</th>
+                                    <th>Số Lượng Nhập</th>
+                                    <th>Tồn Kho</th>
+                                    <th>Đơn Vị</th>
+                                    <th>Giảm Giá</th>
+                                    <th>Kệ Hàng</th>
+                                    <th>Trạng Thái</th>
+                                    
+                                    <th>Hành Động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        @if (Model.InforImports != null)
+                        {
+                           @foreach (var ip in Model.InforImports)
+                            {
+                                <tr>
+                                    <td>@ip.Idproduct</td>
+                                    <td>@Model.dbContext.Products.SingleOrDefault(e => e.Id == ip.Idproduct).Name</td>
+                                    <td>@Model.dbContext.Products.SingleOrDefault(e => e.Id == ip.Idproduct).Producer</td>
+                                    
+                                    <td>@ip.ImportPrice</td>
+                                    <td>@Model.dbContext.Products.SingleOrDefault(e => e.Id == ip.Idproduct).SalePrice</td>
+                                    <td>@ip.DateImport</td>
+                                    <td>@ip.DateExpiry</td>
+                                    <td>@Model.dbContext.Suppliers.SingleOrDefault(e => e.Id == ip.SupplierId).Name</td>
+                                    <td>@ip.QuantityImport</td>
+                                    <td>@Model.dbContext.Products.SingleOrDefault(e => e.Id == ip.Idproduct).QuantityInStock</td>
+                                    <td>@Model.dbContext.Products.SingleOrDefault(e => e.Id == ip.Idproduct).Unit</td>
+                                    
+                                    <td style="color:red">@ip.Discount</td>
+                                    <td>@ip.Shelves</td>
+                                    <td>
+                                        @if(@Model.dbContext.Products.SingleOrDefault(e => e.Id == ip.Idproduct).Status==true){
+                                            <p> Đang bán</p>
+                                        }
+                                        else{
+                                            <p>Ngưng bán</p>
+                                        }
+                                    </td>
+                                    <td style="width: 150px">
+                                        <div class="d-flex justify-content-around">
+                                                <a style="width:50px; height: 30px" class="btn btn-success mx-2 my-2" asp-page ="./DetailInventory"  asp-route-id="@ip.Idimport">Xem</a>
+                                                <a style="width:50px; height: 30px" class="btn btn-warning mx-2 my-2" asp-page="./UpdateInventory" asp-route-id="@ip.Idimport">Sửa</a>
+                                            </div>
+                                    </td>
+                                </tr>
+                            }  
+                        }
+                        else{
+
+                            <p>Không có sản phẩm nào được tìm thấy</p>
+                        }
+                            </tbody>
+                        </table>
+                        <partial name="Admin/Shared/_Page" model="@pageingmodel" />
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>

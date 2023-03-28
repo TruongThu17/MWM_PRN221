@@ -1,0 +1,84 @@
+﻿@page
+@model ProjectFinal.Pages.Admin.Transaction.BillDetailModel
+@{
+}
+<div class="row" style="height:100px;">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Chi Tiết Thông Tin Hóa Đơn 
+                </div>
+            </div>
+            <div class="p-3">
+                <dl class="row">
+                    <dt class="col-sm-2 ">
+                        Tên Người Nhập
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Billed.UsernameNavigation.Name)
+                    </dd>
+                    <dt class="col-sm-2 ">
+                        Tên Khách Hàng
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Billed.IdcustomerNavigation.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Ngày Nhập
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Billed.DateImport)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Tổng Hóa Đơn
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Billed.TotalBill)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Trả Trước
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Billed.Deposit)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Còn Nợ
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Billed.Debt)
+                    </dd>
+                </dl>
+                <table class="table table-responsive-sm">
+                       <thead>
+                                <tr>
+                                    <th style="font-size:12px;">Mã Sản Phẩm</th>
+                                    <th style="font-size:12px;">Tên Sản Phẩm</th>
+                                    <th style="font-size:12px;">Giá</th>
+                                    <th style="font-size:12px;">Số Lượng</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="productTableBody">
+                                @foreach (var p in @Model.Products)
+                                {
+                                    <tr>
+                                        <td>@p.Idproduct</td>
+                                        <td>@p.IdproductNavigation.Name</td>
+                                        <td>@p.Price</td>
+                                        <td>@p.Quatity</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            </table>
+                <div class="mt-5">
+                    <a asp-page="./Bills">Danh Sách</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

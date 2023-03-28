@@ -1,0 +1,204 @@
+﻿@page
+@model ProjectFinal.Pages.Admin.Managerment.ProductsModel
+@{
+    var pageingmodel = new Helper.PagingModel()
+            {
+                currentpage = Model.currentPage,
+                countpages = Model.countPages,
+                generateUrl = (int? p) => @Url.Page("/Admin/Managerment/Products", new { p = p })
+            };
+
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-align-justify"></i> Danh Sách Sản Phẩm
+                </div>
+                <div class="row">
+                    <form method="get">
+                        <div class="row">
+                            <input style="width: 200px;" type="text" class="form-control" value="@Model.searchString" name="searchString" placeholder="Nhập tên đối tác...">
+                            <button type="submit" class="btn btn-primary mx-3">Tìm kiếm</button>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-primary mx-3" data-toggle="modal" data-target="#createModal">
+                        Thêm Mới
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Nhà Sản Xuất</th>
+                            <th>Loại Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Đơn Vị</th>
+                            <th>Trạng Thái</th>
+                            <th>Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Products != null)
+                        {
+                            @foreach (var p in Model.Products)
+                            {
+                                <tr>
+                                    <td>@p.Id</td>
+                                    <td>@p.Name</td>
+                                    <td>@p.Producer</td>
+                                    <td>@Model.dbContext.ProductTypes.SingleOrDefault(e => e.Id == p.ProductType).Name</td>
+                                    <td>@p.SalePrice</td>
+                                    <td>@p.Unit</td>
+                                    <td>
+                                        @if (@p.Status == true)
+                                        {
+                                            <p>Đang bán</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Ngưng bán</p>
+                                        }
+                                    </td>
+                                    <td style="width: 150px">
+                                        <div class="d-flex justify-content-around">
+                                            <a style="width:50px; height: 30px" class="btn btn-success mx-2 my-2" asp-page ="./DetailProducts"  asp-route-id="@p.Id">Xem</a>
+                                            <a style="width:50px; height: 30px" class="btn btn-warning mx-2 my-2" asp-page="./UpdateProducts" asp-route-id="@p.Id">Sửa</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+
+                            <p>Không có sản phẩm nào được tìm thấy</p>
+                        }
+                    </tbody>
+                </table>
+                 <partial name="Admin/Shared/_Page" model="@pageingmodel" />
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>
+<!-- Add new Products -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Tạo Thông Tin Sản Phẩm </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="nameProduct">Tên Sản Phẩm</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="nameProduct" name="nameProduct" type="text" placeholder="Tên Sản Phẩm... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="nameProducer">Tên Nhà Sản Xuất</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="nameProducer" name="nameProducer" type="text" placeholder="Tên Nhà Sản Xuất... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="productype">Loại Sản Phẩm</label>
+                    <div class="col-md-9">
+                        <select class="form-control" id="productype" name="productype">
+                            <option value="0">Chọn Loại Sản Phẩm</option>
+                            @foreach (var p in Model.dbContext.ProductTypes)
+                            {
+                                <option value="@p.Id">@p.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="status">Trạng Thái</label>
+                    <div class="col-md-9">
+                        <select class="form-control" id="status" name="status">
+                            <option value="1">Đang Kinh Doanh</option>
+                            <option value="0">Ngưng Kinh Doanh</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="unit">Đơn Vị</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="unit" name="unit" type="text" placeholder="Đơn Vị... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="saleprice">Giá Bán</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="saleprice" name="saleprice" type="text" placeholder="Giá Bán... ">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="quantityinstock">Tồn Kho</label>
+                    <div class="col-md-9">
+                        <input class="form-control mt-3" id="quantityinstock" name="quantityinstock" type="text" placeholder="Số Lượng Tồn Kho... ">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="createProduct()">Tạo</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function createProduct() {
+         //Lấy dữ liệu từ các input fields trong form modal
+        var nameProduct1 = $('#nameProduct').val();
+        var nameProducer1 = $('#nameProducer').val();
+        var productype1 = $('#productype').val();
+        var status1 = $('#status').val();
+        var unit1 = $('#unit').val();
+        var saleprice1 = $('#saleprice').val();
+        var quantityinstock1 = $('#quantityinstock').val();
+
+        // Gửi dữ liệu lên server bằng phương thức get
+        $.ajax({
+            url: 'http://localhost:5047/Admin/Managerment/CreateProducts/?handler=Create',
+            type: 'get',
+            data: {
+                nameProduct: nameProduct1,
+                nameProducer: nameProducer1,
+                productype: productype1,
+                status: status1,
+                unit: unit1,
+                saleprice: saleprice1,
+                quantityinstock: quantityinstock1
+            },
+            success: function(result) {
+                // Sau khi tạo thành công, ẩn modal
+                $('#createModal').modal('hide');
+
+                // Reload trang để cập nhật danh sách nhà phân phối
+                location.reload();
+            },
+            error: function() {
+                // Xử lý lỗi tại đây
+                alert('Đã có lỗi xảy ra, vui lòng thử lại sau');
+            },
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            }
+        });
+    }
+</script>

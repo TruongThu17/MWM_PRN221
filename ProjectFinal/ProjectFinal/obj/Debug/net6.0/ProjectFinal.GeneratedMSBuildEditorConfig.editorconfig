@@ -23,168 +23,312 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcNTAwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Customer/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3JlYXRlLmNzaHRtbA==
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Customer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3VzdG9tZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Customer/CumtomersDebt.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VtdG9tZXJzRGVidC5jc2h0bWw=
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Customer/Customers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3VzdG9tZXJcQ3VzdG9tZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Customer/Customers.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcQ3VzdG9tZXJzLmNzaHRtbA==
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Customer/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3VzdG9tZXJcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Customer/Detail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcRGV0YWlsLmNzaHRtbA==
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Customer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3VzdG9tZXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Customer/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJcRWRpdC5jc2h0bWw=
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/Bill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXEJpbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/CreateBill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXENyZWF0ZUJpbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/CreateImportProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXENyZWF0ZUltcG9ydFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/CreateInforImportProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXENyZWF0ZUluZm9ySW1wb3J0UHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/CreateProductInBills.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXENyZWF0ZVByb2R1Y3RJbkJpbGxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/CreateProductInReturn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXENyZWF0ZVByb2R1Y3RJblJldHVybi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/CreateProductReturnImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXENyZWF0ZVByb2R1Y3RSZXR1cm5JbXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/CreateReturn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXENyZWF0ZVJldHVybi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/CreateReturnImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXENyZWF0ZVJldHVybkltcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/ImportProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXEltcG9ydFByb2R1Y3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/Return.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXFJldHVybi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/ReturnImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXFJldHVybkltcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/SearchBilll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXFNlYXJjaEJpbGxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/SearchCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXFNlYXJjaEN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Establish/SearchProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWJsaXNoXFNlYXJjaFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/CreateProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcQ3JlYXRlUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/DetailInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcRGV0YWlsSW52ZW50b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/DetailProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcRGV0YWlsUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/InventoryControlProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcSW52ZW50b3J5Q29udHJvbFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/PriceSetting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcUHJpY2VTZXR0aW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/Products.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/UpdateInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcVXBkYXRlSW52ZW50b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/UpdatePrice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcVXBkYXRlUHJpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Managerment/UpdateProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlcm1lbnRcVXBkYXRlUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Shared/_AsideMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2hhcmVkXF9Bc2lkZU1lbnUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Shared/_NavBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2hhcmVkXF9OYXZCYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Shared/_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2hhcmVkXF9QYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Shared/_SideBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2hhcmVkXF9TaWRlQmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Suppiler/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU3VwcGlsZXJcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Suppiler/RequestSupplier.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU3VwcGlsZXJcUmVxdWVzdFN1cHBsaWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Suppiler/Suppilers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU3VwcGlsZXJcU3VwcGlsZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Suppiler/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU3VwcGlsZXJcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/BillDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cQmlsbERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/Bills.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cQmlsbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/DetailImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cRGV0YWlsSW1wb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/DetailReturn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cRGV0YWlsUmV0dXJuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/DetailReturnImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cRGV0YWlsUmV0dXJuSW1wb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/Imports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cSW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/OrderDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cT3JkZXJEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/Orders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/ReturnImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cUmV0dXJuSW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Transaction/Returns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhbnNhY3Rpb25cUmV0dXJucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/CreateBill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcQ3JlYXRlQmlsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/CreateImportProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcQ3JlYXRlSW1wb3J0UHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/CreateInforImportProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcQ3JlYXRlSW5mb3JJbXBvcnRQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/CreateProductInBills.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcQ3JlYXRlUHJvZHVjdEluQmlsbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/CreateProductInReturn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcQ3JlYXRlUHJvZHVjdEluUmV0dXJuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/CreateProductReturnImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcQ3JlYXRlUHJvZHVjdFJldHVybkltcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/CreateReturn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcQ3JlYXRlUmV0dXJuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/CreateReturnImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcQ3JlYXRlUmV0dXJuSW1wb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/ImportProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcSW1wb3J0UHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/Return.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcUmV0dXJuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/ReturnImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcUmV0dXJuSW1wb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/SearchBilll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcU2VhcmNoQmlsbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/SearchCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcU2VhcmNoQ3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Establish/SearchProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxFc3RhYmxpc2hcU2VhcmNoUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Shared/_AsideMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxTaGFyZWRcX0FzaWRlTWVudS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Shared/_NavBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxTaGFyZWRcX05hdkJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Shared/_SideBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxTaGFyZWRcX1NpZGVCYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxTaGFyZWRcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/Bill.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXEJpbGwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/CreateBill.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXENyZWF0ZUJpbGwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/CreateProductInBills.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXENyZWF0ZVByb2R1Y3RJbkJpbGxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/ImportProducts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXEltcG9ydFByb2R1Y3RzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/Order.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXE9yZGVyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/SearchCustomer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXFNlYXJjaEN1c3RvbWVyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Establish/SearchProduct.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0YWJsaXNoXFNlYXJjaFByb2R1Y3QuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/CreateProducts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcQ3JlYXRlUHJvZHVjdHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/DetailInventory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcRGV0YWlsSW52ZW50b3J5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/DetailProducts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcRGV0YWlsUHJvZHVjdHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/InventoryControlProduct.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcSW52ZW50b3J5Q29udHJvbFByb2R1Y3QuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/PriceSetting.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcUHJpY2VTZXR0aW5nLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/Products.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcUHJvZHVjdHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/UpdateInventory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcVXBkYXRlSW52ZW50b3J5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/UpdatePrice.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcVXBkYXRlUHJpY2UuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Managerment/UpdateProducts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlcm1lbnRcVXBkYXRlUHJvZHVjdHMuY3NodG1s
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXGxvZ2luLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/_AsideMenu.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Bc2lkZU1lbnUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/_LayoutFullScreen.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRGdWxsU2NyZWVuLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/_NavBar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9OYXZCYXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/_Page.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9QYWdlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/_SideBar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9TaWRlQmFyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Suppiler/Detail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGlsZXJcRGV0YWlsLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Suppiler/RequestSupplier.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGlsZXJcUmVxdWVzdFN1cHBsaWVyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Suppiler/Suppilers.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGlsZXJcU3VwcGlsZXJzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Suppiler/SupplierDebt.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGlsZXJcU3VwcGxpZXJEZWJ0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Suppiler/Update.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGlsZXJcVXBkYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Transaction/Bills.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cQmlsbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Transaction/Imports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cSW1wb3J0cy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Transaction/Orders.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cT3JkZXJzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Transaction/ReturnImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cUmV0dXJuSW1wb3J0cy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Transaction/Returns.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cUmV0dXJucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/_ViewImports.cshtml]
@@ -195,6 +339,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-8x7uwz5a0i
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Admin/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-58z9wj09q0
+
+[E:/KY7/PRN221/Project/ProjectFinal/ProjectFinal/Pages/Cashier/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzaGllclxTaGFyZWRcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-hsvm8wvo00
